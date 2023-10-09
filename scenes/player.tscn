@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://0e5th8ckuesv"]
+
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_eksl2"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_pjkta"]
+[ext_resource type="Script" path="res://scripts/Gun.gd" id="3_n6pod"]
+[ext_resource type="PackedScene" uid="uid://uw1bdntda4f2" path="res://scenes/bullet.tscn" id="4_ve4kg"]
+[ext_resource type="Texture2D" uid="uid://db8kjwua3nssh" path="res://sprites/spaceship upright.png" id="5_byku8"]
+[ext_resource type="Texture2D" uid="uid://bl3kdm4s12o6o" path="res://Lightmap.png" id="5_vakhp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgm2k"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22f1w"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_pjkta")
+speed = 150
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.0823529, 0.0823529, 0.0823529, 0.52549)
+scale = Vector2(59.5, 59.5)
+texture = ExtResource("1_eksl2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dgm2k")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+
+[node name="Gun" type="Node2D" parent="."]
+script = ExtResource("3_n6pod")
+bullet_scene = ExtResource("4_ve4kg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+modulate = Color(0.439216, 0.439216, 0.439216, 1)
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(2.35812, 2.35811)
+texture = ExtResource("5_byku8")
+
+[node name="Bullet Spawn Point" type="Node2D" parent="Gun"]
+position = Vector2(20, 0)
+
+[node name="Bullet Spawn Point2" type="Node2D" parent="Gun"]
+position = Vector2(2, -13)
+
+[node name="Bullet Spawn Point3" type="Node2D" parent="Gun"]
+position = Vector2(2, 13)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_22f1w")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.583984, 0.583984)
+shadow_enabled = true
+texture = ExtResource("5_vakhp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0.192157, 0.192157, 0.192157, 1)
+position = Vector2(0, 3)
+amount = 250
+lifetime = 5.0
+preprocess = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(500, 300)
+gravity = Vector2(0, 0)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

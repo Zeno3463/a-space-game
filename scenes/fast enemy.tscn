@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://6osr601dgfg2"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_uxth4"]
+[ext_resource type="Texture2D" uid="uid://bug3vjlfwkunf" path="res://sprites/bug.png" id="3_gkyge"]
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="3_n82k7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ryxbr"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p36u2"]
+atlas = ExtResource("3_gkyge")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8caj"]
+atlas = ExtResource("3_gkyge")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ac0i8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p36u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8caj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b7470"]
+polygon = PackedVector2Array(2, -6, -5, 0, 2, 6)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_uxth4")
+speed = 150
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ryxbr")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 9.0
+offset_bottom = -12.0
+value = 50.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_n82k7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.870588, 0.537255, 0.435294, 1)
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ac0i8")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_b7470")

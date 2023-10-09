@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://0e5th8ckuesv"]
+
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_eksl2"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_pjkta"]
+[ext_resource type="Script" path="res://scripts/Gun.gd" id="3_n6pod"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgm2k"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_pjkta")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dgm2k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_eksl2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_enabled = true
+
+[node name="Gun" type="Node2D" parent="."]
+script = ExtResource("3_n6pod")
+
+[node name="Sprite2D" type="Sprite2D" parent="Gun"]
+modulate = Color(1, 1, 1, 0.498039)
+position = Vector2(0, -10)
+scale = Vector2(0.5, 1.4375)
+texture = ExtResource("1_eksl2")

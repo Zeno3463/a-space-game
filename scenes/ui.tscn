@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw4w2fqrhnoqu"]
+
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_8wkfo"]
+[ext_resource type="Script" path="res://scripts/ui.gd" id="1_uhmdv"]
+
+[sub_resource type="Gradient" id="Gradient_jl77d"]
+colors = PackedColorArray(0.226707, 0.226708, 0.226707, 1, 0.202723, 0.202723, 0.202723, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yd71u"]
+gradient = SubResource("Gradient_jl77d")
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_uhmdv")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+offset_left = 15.0
+offset_top = 579.0
+offset_right = 613.0
+offset_bottom = 594.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_yd71u")
+texture_progress = ExtResource("1_8wkfo")
+
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="."]
+modulate = Color(0.0941176, 0.588235, 0.541176, 1)
+offset_left = 15.0
+offset_top = 607.0
+offset_right = 407.0
+offset_bottom = 614.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_yd71u")
+texture_progress = ExtResource("1_8wkfo")
