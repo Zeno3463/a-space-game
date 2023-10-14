@@ -70,6 +70,7 @@ shape = SubResource("RectangleShape2D_c0dnl")
 [node name="Shooter" type="Node2D" parent="."]
 script = ExtResource("4_tapxx")
 bullet_scene = ExtResource("5_jay4t")
-reload_time = 0.05
+reload_time = 0.5
+bullet_speed = 400
 
 [node name="Node2D" type="Node2D" parent="Shooter"]

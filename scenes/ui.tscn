@@ -32,3 +32,62 @@ value = 50.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_yd71u")
 texture_progress = ExtResource("1_8wkfo")
+
+[node name="Upgrades" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 61.0
+offset_top = -925.0
+offset_right = 101.0
+offset_bottom = -885.0
+
+[node name="Control" type="Control" parent="Upgrades"]
+anchors_preset = 0
+offset_left = 287.0
+offset_top = 248.0
+offset_right = 327.0
+offset_bottom = 288.0
+
+[node name="bullet_damage" type="Button" parent="Upgrades/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "bullet damage + 1"
+
+[node name="speed" type="Button" parent="Upgrades/Control"]
+layout_mode = 0
+offset_left = 215.0
+offset_right = 361.0
+offset_bottom = 31.0
+text = "speed + 1"
+
+[node name="acceleration" type="Button" parent="Upgrades/Control"]
+layout_mode = 0
+offset_left = 415.0
+offset_right = 561.0
+offset_bottom = 31.0
+text = "agility + 1"
+
+[node name="bullet_speed" type="Button" parent="Upgrades/Control"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 90.0
+offset_right = 149.0
+offset_bottom = 121.0
+text = "bullet speed + 1"
+
+[node name="reload_time" type="Button" parent="Upgrades/Control"]
+layout_mode = 0
+offset_left = 219.0
+offset_top = 90.0
+offset_right = 365.0
+offset_bottom = 121.0
+text = "reload + 1"
+
+[node name="max_life" type="Button" parent="Upgrades/Control"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 90.0
+offset_right = 567.0
+offset_bottom = 121.0
+text = "max health + 1"

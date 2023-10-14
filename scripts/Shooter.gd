@@ -4,7 +4,8 @@ Shooting Script For Shooter Enemy
 extends Node2D
 
 @export var bullet_scene: PackedScene
-@export var reload_time = 0.5
+@export var reload_time = 0.9
+@export var bullet_speed = 500
 var _start_reload = 0
 
 func _process(delta):
@@ -25,5 +26,5 @@ func _shoot():
 			bullet.friendly = false
 			bullet.global_position = child.global_position
 			bullet.rotation = rotation
-			bullet.velocity = Vector2(cos(rotation), sin(rotation)).normalized() * PlayerNode.bullet_speed
+			bullet.velocity = Vector2(cos(rotation), sin(rotation)).normalized() * bullet_speed
 			get_parent().get_parent().get_parent().add_child(bullet)
