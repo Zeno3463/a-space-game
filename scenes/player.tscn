@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://0e5th8ckuesv"]
+[gd_scene load_steps=11 format=3 uid="uid://0e5th8ckuesv"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_eksl2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_pjkta"]
@@ -6,11 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://uw1bdntda4f2" path="res://scenes/bullet.tscn" id="4_ve4kg"]
 [ext_resource type="Texture2D" uid="uid://db8kjwua3nssh" path="res://sprites/spaceship upright.png" id="5_byku8"]
 [ext_resource type="Texture2D" uid="uid://bl3kdm4s12o6o" path="res://Lightmap.png" id="5_vakhp"]
+[ext_resource type="Script" path="res://scripts/trail.gd" id="7_lhkbl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgm2k"]
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22f1w"]
+
+[sub_resource type="Curve" id="Curve_uiqss"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 5
@@ -68,5 +73,13 @@ preprocess = 10.0
 emission_shape = 3
 emission_rect_extents = Vector2(500, 300)
 gravity = Vector2(0, 0)
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+z_index = -1
+width_curve = SubResource("Curve_uiqss")
+default_color = Color(0.352941, 0.352941, 0.352941, 1)
+script = ExtResource("7_lhkbl")
+trail_length = 20
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

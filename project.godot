@@ -21,6 +21,12 @@ PlayerNode="*res://scenes/player.tscn"
 Spawner="*res://scenes/spawner.tscn"
 Ui="*res://scenes/ui.tscn"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=600
+window/stretch/mode="viewport"
+
 [input]
 
 up={

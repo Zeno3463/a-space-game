@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw4w2fqrhnoqu"]
+[gd_scene load_steps=14 format=3 uid="uid://cw4w2fqrhnoqu"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_8wkfo"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_uhmdv"]
+[ext_resource type="Texture2D" uid="uid://d3l78c05h2k3l" path="res://sprites/icons/bullet damage.png" id="3_qsdhg"]
+[ext_resource type="Texture2D" uid="uid://dmgnslbn3b4bt" path="res://sprites/icons/speed.png" id="4_ul00o"]
+[ext_resource type="Texture2D" uid="uid://ccwml3wxmf24m" path="res://sprites/icons/acceleration.png" id="5_1b42x"]
+[ext_resource type="Texture2D" uid="uid://demxqncdqdwyw" path="res://sprites/icons/bullet speed.png" id="6_6jugj"]
+[ext_resource type="Texture2D" uid="uid://cpvr1je7j3joh" path="res://sprites/icons/reload.png" id="7_xl82y"]
+[ext_resource type="Texture2D" uid="uid://b48yrcrjec4f7" path="res://sprites/icons/max health.png" id="8_5usyy"]
 
 [sub_resource type="Gradient" id="Gradient_jl77d"]
 colors = PackedColorArray(0.226707, 0.226708, 0.226707, 1, 0.202723, 0.202723, 0.202723, 1)
@@ -9,14 +15,25 @@ colors = PackedColorArray(0.226707, 0.226708, 0.226707, 1, 0.202723, 0.202723, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_yd71u"]
 gradient = SubResource("Gradient_jl77d")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkij1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj4x2"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bybvr"]
+
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_uhmdv")
 
 [node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
-offset_left = 15.0
-offset_top = 579.0
-offset_right = 613.0
-offset_bottom = 594.0
+offset_left = 20.0
+offset_top = 545.0
+offset_right = 618.0
+offset_bottom = 560.0
 value = 50.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_yd71u")
@@ -24,10 +41,10 @@ texture_progress = ExtResource("1_8wkfo")
 
 [node name="TextureProgressBar3" type="TextureProgressBar" parent="."]
 modulate = Color(0.0941176, 0.588235, 0.541176, 1)
-offset_left = 15.0
-offset_top = 607.0
-offset_right = 407.0
-offset_bottom = 614.0
+offset_left = 20.0
+offset_top = 573.0
+offset_right = 412.0
+offset_bottom = 580.0
 value = 50.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture1D_yd71u")
@@ -43,51 +60,117 @@ offset_bottom = -885.0
 
 [node name="Control" type="Control" parent="Upgrades"]
 anchors_preset = 0
-offset_left = 287.0
-offset_top = 248.0
-offset_right = 327.0
-offset_bottom = 288.0
+offset_left = 127.0
+offset_top = 243.0
+offset_right = 167.0
+offset_bottom = 283.0
 
 [node name="bullet_damage" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
 text = "bullet damage + 1"
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/Control/bullet_damage"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = -116.0
+offset_right = 117.0
+offset_bottom = -29.0
+texture = ExtResource("3_qsdhg")
 
 [node name="speed" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
-offset_left = 215.0
-offset_right = 361.0
+offset_left = 217.0
+offset_right = 355.0
 offset_bottom = 31.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
 text = "speed + 1"
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/Control/speed"]
+texture_filter = 1
+offset_left = 38.0
+offset_top = -110.0
+offset_right = 109.0
+offset_bottom = -39.0
+texture = ExtResource("4_ul00o")
 
 [node name="acceleration" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
-offset_left = 415.0
-offset_right = 561.0
+offset_left = 421.0
+offset_right = 559.0
 offset_bottom = 31.0
-text = "agility + 1"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+text = "acceleration + 1"
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/Control/acceleration"]
+texture_filter = 1
+offset_left = 37.0
+offset_top = -106.0
+offset_right = 104.0
+offset_bottom = -39.0
+texture = ExtResource("5_1b42x")
 
 [node name="bullet_speed" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 90.0
-offset_right = 149.0
-offset_bottom = 121.0
+offset_top = 194.0
+offset_right = 138.0
+offset_bottom = 225.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
 text = "bullet speed + 1"
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/Control/bullet_speed"]
+texture_filter = 1
+offset_left = 37.0
+offset_top = -106.0
+offset_right = 104.0
+offset_bottom = -39.0
+texture = ExtResource("6_6jugj")
 
 [node name="reload_time" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
-offset_left = 219.0
-offset_top = 90.0
-offset_right = 365.0
-offset_bottom = 121.0
+offset_left = 218.0
+offset_top = 194.0
+offset_right = 356.0
+offset_bottom = 225.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
 text = "reload + 1"
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/Control/reload_time"]
+texture_filter = 1
+offset_left = 37.0
+offset_top = -106.0
+offset_right = 104.0
+offset_bottom = -39.0
+texture = ExtResource("7_xl82y")
 
 [node name="max_life" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
 offset_left = 421.0
-offset_top = 90.0
-offset_right = 567.0
-offset_bottom = 121.0
-text = "max health + 1"
+offset_top = 193.0
+offset_right = 559.0
+offset_bottom = 224.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+text = "max life + 1"
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/Control/max_life"]
+texture_filter = 1
+offset_left = 37.0
+offset_top = -106.0
+offset_right = 104.0
+offset_bottom = -39.0
+texture = ExtResource("8_5usyy")
