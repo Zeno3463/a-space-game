@@ -58,6 +58,14 @@ offset_top = -925.0
 offset_right = 101.0
 offset_bottom = -885.0
 
+[node name="ColorRect" type="ColorRect" parent="Upgrades"]
+layout_mode = 0
+offset_left = -406.0
+offset_right = 1246.0
+offset_bottom = 840.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.709804)
+
 [node name="Control" type="Control" parent="Upgrades"]
 anchors_preset = 0
 offset_left = 127.0
@@ -69,6 +77,7 @@ offset_bottom = 283.0
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
@@ -88,6 +97,7 @@ layout_mode = 0
 offset_left = 217.0
 offset_right = 355.0
 offset_bottom = 31.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
@@ -95,6 +105,7 @@ text = "speed + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/speed"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 38.0
 offset_top = -110.0
 offset_right = 109.0
@@ -106,6 +117,7 @@ layout_mode = 0
 offset_left = 421.0
 offset_right = 559.0
 offset_bottom = 31.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
@@ -113,6 +125,7 @@ text = "acceleration + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/acceleration"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 37.0
 offset_top = -106.0
 offset_right = 104.0
@@ -124,6 +137,7 @@ layout_mode = 0
 offset_top = 194.0
 offset_right = 138.0
 offset_bottom = 225.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
@@ -131,6 +145,7 @@ text = "bullet speed + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/bullet_speed"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 37.0
 offset_top = -106.0
 offset_right = 104.0
@@ -143,6 +158,7 @@ offset_left = 218.0
 offset_top = 194.0
 offset_right = 356.0
 offset_bottom = 225.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
@@ -150,6 +166,7 @@ text = "reload + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/reload_time"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 37.0
 offset_top = -106.0
 offset_right = 104.0
@@ -162,6 +179,7 @@ offset_left = 421.0
 offset_top = 193.0
 offset_right = 559.0
 offset_bottom = 224.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
@@ -169,6 +187,7 @@ text = "max life + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/max_life"]
 texture_filter = 1
+layout_mode = 0
 offset_left = 37.0
 offset_top = -106.0
 offset_right = 104.0

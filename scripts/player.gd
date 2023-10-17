@@ -8,6 +8,7 @@ var curr_points = 0
 var max_points = 5
 
 @onready var life = max_life
+@onready var normal_color = $Gun/Sprite2D.modulate
 
 ### UPGRADABLE PARAMETERS ###
 var acceleration = 200
@@ -32,6 +33,8 @@ var max_life_i = 0
 @export var bullet_dmg_list = [1, 2, 3, 4, 5, 6]
 @export var max_life_list = [10, 20, 40, 60, 80]
 
+@export var damage_player_color: Color
+
 func _process(delta):
 	_handle_movement(delta)
 	_handle_points()
@@ -45,6 +48,10 @@ func _process(delta):
 # called when the player is hit
 func hit():
 	life -= 1
+	$Camera2D.shake(50)
+	$Gun/Sprite2D.modulate = damage_player_color
+	await get_tree().create_timer(0.2).timeout
+	$Gun/Sprite2D.modulate = normal_color
 
 # called when a body hits the player
 func _on_area_2d_body_entered(body):
