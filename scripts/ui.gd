@@ -16,3 +16,4 @@ func _on_upgrade_pressed(name):
 	name = name + "_i"
 	PlayerNode.set(name, PlayerNode.get(name) + 1)
 	$Upgrades.position.y = -1000
+	get_tree().paused = false

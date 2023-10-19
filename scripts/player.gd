@@ -102,3 +102,4 @@ func _handle_points():
 		curr_points = 0
 		max_points += 5
 		Ui.get_node("Upgrades").position.y = 0
+		get_tree().paused = true

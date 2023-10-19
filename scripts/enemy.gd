@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 class_name Enemy
 
+var explosion = preload("res://scenes/explosion.tscn")
+
 @export var speed = 50
 @export var life = 5
 @export var points = 1
@@ -38,4 +40,7 @@ func hit():
 		PlayerNode.curr_points += points
 		
 		# destroy the enemy
+		var explosion_node = explosion.instantiate()
+		explosion_node.global_position = global_position
+		get_parent().add_child(explosion_node)
 		queue_free()
