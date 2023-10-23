@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://cnd0ix8fx6rh0"]
+
+[ext_resource type="Script" path="res://scripts/space_station.gd" id="1_khos6"]
+[ext_resource type="Texture2D" uid="uid://d4m3m7mkfcyql" path="res://sprites/space station.png" id="2_6px26"]
+[ext_resource type="Texture2D" uid="uid://bl3kdm4s12o6o" path="res://Lightmap.png" id="3_xoqfo"]
+[ext_resource type="Script" path="res://scripts/Shooter.gd" id="4_64ll5"]
+[ext_resource type="PackedScene" uid="uid://dqoncvtcyaw7m" path="res://scenes/enemy_bullet.tscn" id="5_nkqpr"]
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="6_5t4o8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6cniu"]
+radius = 17.6
+
+[sub_resource type="Animation" id="Animation_y4xli"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vt42m"]
+resource_name = "new_animation"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.6, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qnswu"]
+_data = {
+"RESET": SubResource("Animation_y4xli"),
+"new_animation": SubResource("Animation_vt42m")
+}
+
+[node name="space station" type="Node2D"]
+z_index = -1
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_khos6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.486275, 0.486275, 0.486275, 1)
+texture_filter = 1
+scale = Vector2(2.358, 2.358)
+texture = ExtResource("2_6px26")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_6cniu")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.152344, 0.152344)
+color = Color(1, 0.360784, 0.360784, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("3_xoqfo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_qnswu")
+}
+
+[node name="Shooter" type="Node2D" parent="."]
+script = ExtResource("4_64ll5")
+bullet_scene = ExtResource("5_nkqpr")
+reload_time = 0.1
+bullet_speed = 50
+lifetime = 10
+
+[node name="Node2D" type="Node2D" parent="Shooter"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -87.6
+offset_top = -31.6
+offset_right = 88.4
+offset_bottom = -28.6
+value = 50.0
+nine_patch_stretch = true
+texture_progress = ExtResource("6_5t4o8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

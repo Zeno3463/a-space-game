@@ -6,6 +6,8 @@ extends Node2D
 @export var bullet_scene: PackedScene
 @export var reload_time = 0.9
 @export var bullet_speed = 500
+@export var radius = 500
+@export var lifetime = 1
 var _start_reload = 0
 
 func _process(delta):
@@ -13,7 +15,7 @@ func _process(delta):
 	look_at(PlayerNode.global_position)
 	
 	# auto shooting mechanism with a certain reload time
-	if _start_reload <= 0:
+	if _start_reload <= 0 and global_position.distance_to(PlayerNode.global_position) <= radius:
 		_shoot()
 		_start_reload = reload_time
 	else:
@@ -27,4 +29,5 @@ func _shoot():
 			bullet.global_position = child.global_position
 			bullet.rotation = rotation
 			bullet.velocity = Vector2(cos(rotation), sin(rotation)).normalized() * bullet_speed
-			get_parent().get_parent().get_parent().add_child(bullet)
+			bullet.lifetime = lifetime
+			get_tree().get_root().get_node("/root/Main Scene").add_child(bullet)

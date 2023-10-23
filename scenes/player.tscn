@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0e5th8ckuesv"]
+[gd_scene load_steps=14 format=3 uid="uid://0e5th8ckuesv"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_eksl2"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_pjkta"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://db8kjwua3nssh" path="res://sprites/spaceship upright.png" id="5_byku8"]
 [ext_resource type="Texture2D" uid="uid://bl3kdm4s12o6o" path="res://Lightmap.png" id="5_vakhp"]
 [ext_resource type="Script" path="res://scripts/trail.gd" id="7_lhkbl"]
+[ext_resource type="Script" path="res://scripts/space station tracker.gd" id="9_1hcyl"]
+[ext_resource type="Texture2D" uid="uid://djcqm8662ibqw" path="res://sprites/icons/arrow.png" id="10_u2drv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgm2k"]
 size = Vector2(16, 16)
@@ -86,6 +88,16 @@ width_curve = SubResource("Curve_uiqss")
 default_color = Color(0.352941, 0.352941, 0.352941, 1)
 script = ExtResource("7_lhkbl")
 trail_length = 20
+
+[node name="space station tracker" type="Node2D" parent="."]
+script = ExtResource("9_1hcyl")
+
+[node name="Sprite2D" type="Sprite2D" parent="space station tracker"]
+modulate = Color(0, 1, 0.2, 1)
+texture_filter = 1
+position = Vector2(84, 0)
+scale = Vector2(2.358, 2.358)
+texture = ExtResource("10_u2drv")
 
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
