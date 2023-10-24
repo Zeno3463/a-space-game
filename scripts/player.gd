@@ -10,6 +10,12 @@ var max_points = 5
 @onready var life = max_life
 @onready var normal_color = $Gun/Sprite2D.modulate
 
+### SHIP PARAMETERS ###
+var shooter_class = 0
+var bomber_class = 0
+var booster_class = 0
+### --------------- ###
+
 ### UPGRADABLE PARAMETERS ###
 var acceleration = 200
 var speed = 100
@@ -103,3 +109,10 @@ func _handle_points():
 		max_points += 5
 		Ui.get_node("Upgrades").position.y = 0
 		get_tree().paused = true
+
+func upgrade_shooter_class():
+	if shooter_class == 0:
+		$Gun/back.visible = true
+		$Gun/back2.visible = true
+		$Gun/back3.visible = true
+		shooter_class += 1

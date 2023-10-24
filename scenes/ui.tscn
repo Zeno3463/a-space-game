@@ -195,3 +195,89 @@ offset_top = -106.0
 offset_right = 104.0
 offset_bottom = -39.0
 texture = ExtResource("8_5usyy")
+
+[node name="Ship Upgrade" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = 61.0
+offset_top = -1936.0
+offset_right = 101.0
+offset_bottom = -1896.0
+
+[node name="ColorRect" type="ColorRect" parent="Ship Upgrade"]
+layout_mode = 0
+offset_left = -406.0
+offset_right = 1246.0
+offset_bottom = 840.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.709804)
+
+[node name="Control" type="Control" parent="Ship Upgrade"]
+anchors_preset = 0
+offset_left = 127.0
+offset_top = 243.0
+offset_right = 167.0
+offset_bottom = 283.0
+
+[node name="shooter_class" type="Button" parent="Ship Upgrade/Control"]
+layout_mode = 0
+offset_top = 95.0
+offset_right = 138.0
+offset_bottom = 118.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+text = "shooter"
+
+[node name="TextureRect" type="TextureRect" parent="Ship Upgrade/Control/shooter_class"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = -116.0
+offset_right = 117.0
+offset_bottom = -29.0
+texture = ExtResource("3_qsdhg")
+
+[node name="bomber_class" type="Button" parent="Ship Upgrade/Control"]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 95.0
+offset_right = 355.0
+offset_bottom = 126.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+text = "bomber"
+
+[node name="TextureRect" type="TextureRect" parent="Ship Upgrade/Control/bomber_class"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 38.0
+offset_top = -110.0
+offset_right = 109.0
+offset_bottom = -39.0
+texture = ExtResource("4_ul00o")
+
+[node name="booster_class" type="Button" parent="Ship Upgrade/Control"]
+layout_mode = 0
+offset_left = 421.0
+offset_top = 95.0
+offset_right = 559.0
+offset_bottom = 126.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+text = "booster"
+
+[node name="TextureRect" type="TextureRect" parent="Ship Upgrade/Control/booster_class"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 37.0
+offset_top = -106.0
+offset_right = 104.0
+offset_bottom = -39.0
+texture = ExtResource("5_1b42x")

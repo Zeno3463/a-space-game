@@ -6,11 +6,13 @@ extends Node2D
 
 var _start_spawn_freq = 0
 var _curr_enemies = 0
+var can_spawn = true
 
 func _ready():
 	randomize()
 
 func _process(delta):
+	if not can_spawn: return
 	if _start_spawn_freq <= 0 && _curr_enemies < max_enemies:
 		_spawn()
 		_start_spawn_freq = spawn_freq

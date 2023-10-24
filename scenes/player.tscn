@@ -61,6 +61,18 @@ position = Vector2(2, -13)
 [node name="Bullet Spawn Point3" type="Node2D" parent="Gun"]
 position = Vector2(2, 13)
 
+[node name="back" type="Node2D" parent="Gun"]
+visible = false
+position = Vector2(-18, 13)
+
+[node name="back2" type="Node2D" parent="Gun"]
+visible = false
+position = Vector2(-18, -13)
+
+[node name="back3" type="Node2D" parent="Gun"]
+visible = false
+position = Vector2(-14, 0)
+
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

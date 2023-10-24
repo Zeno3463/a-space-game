@@ -36,5 +36,8 @@ func _shoot():
 			bullet.rotation = rotation
 			bullet.velocity = Vector2(cos(rotation), sin(rotation)).normalized() * PlayerNode.bullet_speed
 			
+			if child.name.begins_with("back"):
+				bullet.velocity *= -1
+			
 			# add the bullet to the scene
 			get_parent().get_parent().add_child(bullet)
