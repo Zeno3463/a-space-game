@@ -24,7 +24,7 @@ func _process(delta):
 func _shoot():
 	for child in get_children():
 		if !child is Sprite2D and child.visible:
-			var bullet: Bullet = bullet_scene.instantiate()
+			var bullet = bullet_scene.instantiate()
 			bullet.friendly = false
 			bullet.global_position = child.global_position
 			bullet.rotation = rotation

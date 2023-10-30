@@ -44,4 +44,6 @@ func _respawn():
 func _on_area_2d_body_entered(body):
 	if body is Bullet and body.friendly:
 		hit()
+		if self != null:
+			hit()
 		body.queue_free()

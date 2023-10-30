@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw4w2fqrhnoqu"]
+[gd_scene load_steps=17 format=3 uid="uid://cw4w2fqrhnoqu"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_8wkfo"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_uhmdv"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://demxqncdqdwyw" path="res://sprites/icons/bullet speed.png" id="6_6jugj"]
 [ext_resource type="Texture2D" uid="uid://cpvr1je7j3joh" path="res://sprites/icons/reload.png" id="7_xl82y"]
 [ext_resource type="Texture2D" uid="uid://b48yrcrjec4f7" path="res://sprites/icons/max health.png" id="8_5usyy"]
+[ext_resource type="Texture2D" uid="uid://c8xtu1taagk8m" path="res://sprites/icons/figther class.png" id="9_v4hmc"]
+[ext_resource type="Texture2D" uid="uid://rcl0ohkq4rsv" path="res://sprites/icons/bomber class.png" id="10_v3gh6"]
+[ext_resource type="Texture2D" uid="uid://dpcmj56xvfcpc" path="res://sprites/icons/booster class.png" id="11_2cqar"]
 
 [sub_resource type="Gradient" id="Gradient_jl77d"]
 colors = PackedColorArray(0.226707, 0.226708, 0.226707, 1, 0.202723, 0.202723, 0.202723, 1)
@@ -238,7 +241,7 @@ offset_left = 30.0
 offset_top = -116.0
 offset_right = 117.0
 offset_bottom = -29.0
-texture = ExtResource("3_qsdhg")
+texture = ExtResource("9_v4hmc")
 
 [node name="bomber_class" type="Button" parent="Ship Upgrade/Control"]
 layout_mode = 0
@@ -259,7 +262,7 @@ offset_left = 38.0
 offset_top = -110.0
 offset_right = 109.0
 offset_bottom = -39.0
-texture = ExtResource("4_ul00o")
+texture = ExtResource("10_v3gh6")
 
 [node name="booster_class" type="Button" parent="Ship Upgrade/Control"]
 layout_mode = 0
@@ -280,4 +283,4 @@ offset_left = 37.0
 offset_top = -106.0
 offset_right = 104.0
 offset_bottom = -39.0
-texture = ExtResource("5_1b42x")
+texture = ExtResource("11_2cqar")

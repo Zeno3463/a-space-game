@@ -18,10 +18,15 @@ func _process(_delta):
 func _on_ship_upgrade_pressed(name):
 	if name == "shooter_class":
 		PlayerNode.upgrade_shooter_class()
+	if name == "booster_class":
+		PlayerNode.upgrade_booster_class()
+	if name == "bomber_class":
+		PlayerNode.upgrade_bomber_class()
 	$"Ship Upgrade".position.y = -2000
 	get_tree().paused = false
 
 func _on_upgrade_pressed(name):
+	if not get_tree().paused: return
 	name = name + "_i"
 	PlayerNode.set(name, PlayerNode.get(name) + 1)
 	$Upgrades.position.y = -1000

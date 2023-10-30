@@ -3,6 +3,9 @@ extends CharacterBody2D
 class_name Player
 
 var dir = Vector2.ONE
+var is_dashing = false
+var can_dash = false
+var can_bomb = false
 
 var curr_points = 0
 var max_points = 5
@@ -15,6 +18,11 @@ var shooter_class = 0
 var bomber_class = 0
 var booster_class = 0
 ### --------------- ###
+
+### SHIP SPRITES ###
+@export var shooter_classes: Array[Texture]
+@export var booster_classes: Array[Texture]
+@export var bomber_classes: Array[Texture]
 
 ### UPGRADABLE PARAMETERS ###
 var acceleration = 200
@@ -100,7 +108,8 @@ func _handle_movement(delta):
 			if dir.x > 0: dir.x = 0
 	
 	# move the player according to the direction input by the player
-	set_velocity(dir)
+	if !is_dashing: set_velocity(dir)
+	_handle_dash()
 	move_and_slide()
 
 func _handle_points():
@@ -115,4 +124,30 @@ func upgrade_shooter_class():
 		$Gun/back.visible = true
 		$Gun/back2.visible = true
 		$Gun/back3.visible = true
+		$Gun/Sprite2D.set_texture(shooter_classes[0])
 		shooter_class += 1
+
+func upgrade_booster_class():
+	if booster_class == 0:
+		can_dash = true
+		$Gun/Sprite2D2.set_texture(booster_classes[0])
+		booster_class += 1
+
+func upgrade_bomber_class():
+	if bomber_class == 0:
+		can_bomb = true
+		$Gun/Sprite2D3.set_texture(bomber_classes[0])
+		bomber_class += 1
+
+func _handle_dash():
+	if not can_dash: return
+	if Input.is_action_just_pressed("dash"):
+		$Line2D.visible = true
+		is_dashing = true
+		set_velocity(Vector2(cos($Gun.rotation), sin($Gun.rotation)).normalized() * 150 * 10)
+		await get_tree().create_timer(0.2).timeout
+		set_velocity(Vector2.ZERO)
+		is_dashing = false
+		$Line2D.visible = false
+
+
