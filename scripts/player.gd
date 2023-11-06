@@ -5,7 +5,7 @@ class_name Player
 var dir = Vector2.ONE
 var is_dashing = false
 var can_dash = false
-var can_bomb = false
+var can_bomb = true
 
 var curr_points = 0
 var max_points = 5
@@ -40,28 +40,41 @@ var reload_time_i = 0
 var bullet_damage_i = 0
 var max_life_i = 0
 
-@export var acc_list = [200, 210, 220, 230, 240, 250]
+var is_dead = false
+
+@export var acceleration_list = [200, 210, 220, 230, 240, 250]
 @export var speed_list = [100, 150, 200, 250, 300, 350]
 @export var bullet_speed_list = [500, 550, 600, 650, 700, 750]
-@export var reload_list = [0.1, 0.08, 0.06, 0.04, 0.02, 0.01]
-@export var bullet_dmg_list = [1, 2, 3, 4, 5, 6]
+@export var reload_time_list = [0.1, 0.08, 0.06, 0.04, 0.02, 0.01]
+@export var bullet_damage_list = [1, 2, 3, 4, 5, 6]
 @export var max_life_list = [10, 20, 40, 60, 80]
 
 @export var damage_player_color: Color
+@export var explosion: PackedScene
 
 func _process(delta):
 	_handle_movement(delta)
 	_handle_points()
-	acceleration = acc_list[acceleration_i]
+	acceleration = acceleration_list[acceleration_i]
 	speed = speed_list[speed_i]
 	bullet_speed = bullet_speed_list[bullet_speed_i]
-	reload_time = reload_list[reload_time_i]
-	bullet_damage = bullet_dmg_list[bullet_damage_i]
+	reload_time = reload_time_list[reload_time_i]
+	bullet_damage = bullet_damage_list[bullet_damage_i]
 	max_life = max_life_list[max_life_i]
 
 # called when the player is hit
 func hit():
+	if life <= 0: return
 	life -= 1
+	if life <= 0:
+		is_dead = true
+		$Sprite2D2.visible = false
+		$Gun/Sprite2D.visible = false
+		$Gun/Sprite2D2.visible = false
+		$Gun/Sprite2D3.visible = false
+		var explosion_node = explosion.instantiate()
+		explosion_node.global_position = global_position
+		get_tree().get_root().get_node("/root/Main Scene").add_child(explosion_node)
 	$Camera2D.shake(50)
 	$Gun/Sprite2D.modulate = damage_player_color
 	await get_tree().create_timer(0.2).timeout
@@ -79,6 +92,7 @@ func _on_area_2d_body_entered(body):
 		body.queue_free()
 
 func _handle_movement(delta):
+	if is_dead: return
 	# handle basic movement with acceleration
 	if Input.is_action_pressed("down"):
 		dir.y += acceleration * delta
@@ -118,6 +132,7 @@ func _handle_points():
 		max_points += 5
 		Ui.get_node("Upgrades").position.y = 0
 		get_tree().paused = true
+		Ui.get_node("AnimationPlayer").play("normal upgrade fade")
 
 func upgrade_shooter_class():
 	if shooter_class == 0:

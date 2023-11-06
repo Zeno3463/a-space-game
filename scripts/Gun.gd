@@ -4,6 +4,7 @@ extends Node2D
 var _start_reload = 0
 
 func _process(delta):
+	if PlayerNode.is_dead: return
 	# Get the global position of the mouse
 	var mouse_position = get_global_mouse_position()
 	

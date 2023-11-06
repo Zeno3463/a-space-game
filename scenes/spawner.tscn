@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://3n8h8swi1vpk"]
+[gd_scene load_steps=6 format=3 uid="uid://3n8h8swi1vpk"]
 
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="1_fhfos"]
 [ext_resource type="PackedScene" uid="uid://jeivkdpw7ci0" path="res://scenes/enemy.tscn" id="2_hbjnt"]
 [ext_resource type="PackedScene" uid="uid://6osr601dgfg2" path="res://scenes/fast enemy.tscn" id="3_3sx0i"]
 [ext_resource type="PackedScene" uid="uid://kmumewo5upbv" path="res://scenes/shooter_enemy.tscn" id="4_xi8s7"]
+[ext_resource type="PackedScene" uid="uid://cu8mjkwxj60mg" path="res://scenes/spike_enemy.tscn" id="5_fx2dt"]
 
 [node name="spawner" type="Node2D"]
 script = ExtResource("1_fhfos")
-enemies = Array[PackedScene]([ExtResource("2_hbjnt"), ExtResource("3_3sx0i"), ExtResource("4_xi8s7")])
+enemies = Array[PackedScene]([ExtResource("2_hbjnt"), ExtResource("3_3sx0i"), ExtResource("4_xi8s7"), ExtResource("5_fx2dt")])

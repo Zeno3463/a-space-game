@@ -11,9 +11,6 @@ extends Node2D
 var _start_reload = 0
 
 func _process(delta):
-	# rotate the gun to the direction of the player
-	look_at(PlayerNode.global_position)
-	
 	# auto shooting mechanism with a certain reload time
 	if _start_reload <= 0 and global_position.distance_to(PlayerNode.global_position) <= radius:
 		_shoot()
@@ -28,6 +25,6 @@ func _shoot():
 			bullet.friendly = false
 			bullet.global_position = child.global_position
 			bullet.rotation = child.global_rotation
-			bullet.velocity = Vector2(cos(rotation), sin(rotation)).normalized() * bullet_speed
+			bullet.velocity = Vector2(cos(child.global_rotation), sin(child.global_rotation)).normalized() * bullet_speed
 			bullet.lifetime = lifetime
 			get_tree().get_root().get_node("/root/Main Scene").add_child(bullet)

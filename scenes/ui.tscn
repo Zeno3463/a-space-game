@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cw4w2fqrhnoqu"]
+[gd_scene load_steps=27 format=3 uid="uid://cw4w2fqrhnoqu"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_8wkfo"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_uhmdv"]
@@ -29,6 +29,84 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bybvr"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8bguu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_st86i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rdwt3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yg3q4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0k3m2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_42gvq"]
+
+[sub_resource type="Animation" id="Animation_r72oe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Upgrades:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ship Upgrade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_etwft"]
+resource_name = "normal upgrade fade"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Upgrades:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pnth4"]
+resource_name = "ship upgrade fade"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship Upgrade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_waag8"]
+_data = {
+"RESET": SubResource("Animation_r72oe"),
+"normal upgrade fade": SubResource("Animation_etwft"),
+"ship upgrade fade": SubResource("Animation_pnth4")
+}
+
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_uhmdv")
@@ -56,6 +134,7 @@ texture_progress = ExtResource("1_8wkfo")
 
 [node name="Upgrades" type="Control" parent="."]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 61.0
@@ -86,6 +165,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8bguu")
 text = "bullet damage + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/bullet_damage"]
@@ -97,6 +177,17 @@ offset_right = 117.0
 offset_bottom = -29.0
 texture = ExtResource("3_qsdhg")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/bullet_damage"]
+modulate = Color(0.847656, 0.339844, 0.386719, 1)
+layout_mode = 0
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 33.0
+max_value = 6.0
+value = 6.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_8wkfo")
+
 [node name="speed" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
 offset_left = 217.0
@@ -106,6 +197,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_st86i")
 text = "speed + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/speed"]
@@ -117,6 +209,16 @@ offset_right = 109.0
 offset_bottom = -39.0
 texture = ExtResource("4_ul00o")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/speed"]
+modulate = Color(0.597656, 0.894531, 0.3125, 1)
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 33.0
+max_value = 6.0
+value = 6.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_8wkfo")
+
 [node name="acceleration" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
 offset_left = 421.0
@@ -126,6 +228,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rdwt3")
 text = "acceleration + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/acceleration"]
@@ -137,6 +240,16 @@ offset_right = 104.0
 offset_bottom = -39.0
 texture = ExtResource("5_1b42x")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/acceleration"]
+modulate = Color(0.464844, 0.683594, 0.25, 1)
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 33.0
+max_value = 6.0
+value = 6.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_8wkfo")
+
 [node name="bullet_speed" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
 offset_top = 194.0
@@ -146,6 +259,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yg3q4")
 text = "bullet speed + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/bullet_speed"]
@@ -157,6 +271,16 @@ offset_right = 104.0
 offset_bottom = -39.0
 texture = ExtResource("6_6jugj")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/bullet_speed"]
+modulate = Color(0.371094, 0.800781, 0.890625, 1)
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 33.0
+max_value = 6.0
+value = 6.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_8wkfo")
+
 [node name="reload_time" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
 offset_left = 218.0
@@ -167,6 +291,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0k3m2")
 text = "reload + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/reload_time"]
@@ -178,6 +303,16 @@ offset_right = 104.0
 offset_bottom = -39.0
 texture = ExtResource("7_xl82y")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/reload_time"]
+modulate = Color(0.980469, 0.945313, 0.210938, 1)
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 33.0
+max_value = 6.0
+value = 6.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_8wkfo")
+
 [node name="max_life" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
 offset_left = 421.0
@@ -188,6 +323,7 @@ mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_42gvq")
 text = "max life + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/max_life"]
@@ -199,8 +335,19 @@ offset_right = 104.0
 offset_bottom = -39.0
 texture = ExtResource("8_5usyy")
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/max_life"]
+modulate = Color(0.671875, 0.195313, 0.195313, 1)
+offset_top = 28.0
+offset_right = 139.0
+offset_bottom = 33.0
+max_value = 6.0
+value = 6.0
+nine_patch_stretch = true
+texture_progress = ExtResource("1_8wkfo")
+
 [node name="Ship Upgrade" type="Control" parent="."]
 process_mode = 3
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 61.0
@@ -284,3 +431,9 @@ offset_top = -106.0
 offset_right = 104.0
 offset_bottom = -39.0
 texture = ExtResource("11_2cqar")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_waag8")
+}

@@ -1,0 +1,148 @@
+[gd_scene load_steps=17 format=3 uid="uid://cu8mjkwxj60mg"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_0jpu4"]
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="2_b6tj7"]
+[ext_resource type="Texture2D" uid="uid://cogrh1lxuq3or" path="res://sprites/spike bug.png" id="3_w8iv6"]
+[ext_resource type="Script" path="res://scripts/spike.gd" id="4_j7rs2"]
+[ext_resource type="PackedScene" uid="uid://dqoncvtcyaw7m" path="res://scenes/enemy_bullet.tscn" id="5_kqq5j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr5b3"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77hf0"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax81v"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1u8fy"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vws82"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo4qt"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkf6o"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knvwc"]
+atlas = ExtResource("3_w8iv6")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_olvpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr5b3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77hf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax81v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1u8fy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vws82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo4qt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkf6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knvwc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xttuo"]
+polygon = PackedVector2Array(-11, -5, -11, -2, -9, -2, -9, 2, -7, 2, -7, 7, -5, 7, -5, 9, -2, 9, -2, 11, 2, 11, 2, 9, 4, 9, 4, 6, 7, 6, 7, 2, 9, 2, 9, -2, 11, -2, 11, -5, 11, -5, 5, -5, 5, -7, -5, -7, -5, -5, -5, -5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0dnl"]
+size = Vector2(18, 18)
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_0jpu4")
+life = 10
+points = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -8.0
+offset_top = -20.0
+offset_right = 9.0
+offset_bottom = -18.0
+value = 50.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_b6tj7")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+texture_filter = 1
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_olvpl")
+autoplay = "default"
+frame_progress = 0.462054
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Node2D/AnimatedSprite2D"]
+rotation = 1.5708
+scale = Vector2(0.444444, 0.444444)
+occluder = SubResource("OccluderPolygon2D_xttuo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c0dnl")
+
+[node name="shooter" type="Node2D" parent="."]
+script = ExtResource("4_j7rs2")
+bullet_scene = ExtResource("5_kqq5j")
+reload_time = 1.6
+bullet_speed = 100
+
+[node name="Node2D" type="Node2D" parent="shooter"]
+position = Vector2(-18, 0)
+rotation = 3.14159
+
+[node name="Node2D2" type="Node2D" parent="shooter"]
+position = Vector2(-13, -13)
+rotation = 3.75246
+
+[node name="Node2D3" type="Node2D" parent="shooter"]
+position = Vector2(0, -19)
+rotation = -1.5708
+
+[node name="Node2D4" type="Node2D" parent="shooter"]
+position = Vector2(13, -13)
+rotation = -0.785398
+
+[node name="Node2D5" type="Node2D" parent="shooter"]
+position = Vector2(19, 0)
+
+[node name="Node2D6" type="Node2D" parent="shooter"]
+position = Vector2(13, 13)
+rotation = 0.785398
+
+[node name="Node2D7" type="Node2D" parent="shooter"]
+position = Vector2(0, 19)
+rotation = 1.5708
+
+[node name="Node2D8" type="Node2D" parent="shooter"]
+position = Vector2(-13, 13)
+rotation = -3.75246

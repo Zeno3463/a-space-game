@@ -32,9 +32,9 @@ func hit():
 	# if there's no life left
 	if life <= 0:
 		# despawn the enemy
-		Spawner.can_spawn = false
 		_respawn()
 		Ui.get_node("Ship Upgrade").position.y = 0
+		Ui.get_node("AnimationPlayer").play("ship upgrade fade")
 		get_tree().paused = true
 
 func _respawn():

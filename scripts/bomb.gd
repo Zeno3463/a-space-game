@@ -38,4 +38,5 @@ func _explode():
 			if child != null:
 				child.hit()
 	# Remove the bomb from the scene
+	await $AnimationPlayer.animation_finished
 	queue_free()

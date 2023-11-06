@@ -21,7 +21,8 @@ func _process(delta):
 	$TextureProgressBar.value = life
 	
 	# Rotate the enemy to face the player
-	$AnimatedSprite2D.look_at(PlayerNode.global_position)
+	if get_node("AnimatedSprite2D"):
+		$AnimatedSprite2D.look_at(PlayerNode.global_position)
 
 func _physics_process(delta):
 	# Move the enemy towards the player with a certain speed
@@ -33,7 +34,6 @@ func _physics_process(delta):
 func hit():
 	# Subtract the life of the enemy by the bullet damage from the player
 	life -= PlayerNode.bullet_damage
-	
 	# Check if there's no life left
 	if life <= 0:
 		# Despawn the enemy (assuming there's a Spawner class)
