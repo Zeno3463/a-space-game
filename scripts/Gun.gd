@@ -2,9 +2,9 @@ extends Node2D
 
 @export var bullet_scene: PackedScene
 var _start_reload = 0
+var can_shoot = true
 
 func _process(delta):
-	if PlayerNode.is_dead: return
 	# Get the global position of the mouse
 	var mouse_position = get_global_mouse_position()
 	
@@ -18,6 +18,7 @@ func _process(delta):
 	rotation_degrees = angle * 180 / PI
 	
 	# Auto shoot with a certain reload time
+	if PlayerNode.is_dead or not can_shoot: return
 	if _start_reload <= 0:
 		_shoot()
 		_start_reload = PlayerNode.reload_time

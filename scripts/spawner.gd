@@ -3,6 +3,7 @@ extends Node2D
 @export var enemies: Array[PackedScene]
 @export var max_enemies = 10
 @export var spawn_freq = 0.5
+@export var mid_level: PackedScene
 
 var _start_spawn_freq = 0
 var _curr_enemies = 0
@@ -31,6 +32,15 @@ func _get_random_position_in_radius(center: Vector2, radius: float):
 		center.x + radius * cos(angle),
 		center.y + radius * sin(angle)
 	)
+
+func destroy_all():
+	can_spawn = false
+	PlayerNode.get_node("Gun").can_shoot = false
+	PlayerNode.get_node("Bomb Shooter").can_shoot = false
+	for child in get_children():
+		if child is Enemy:
+			child.destroy()
+	Ui.load_mid_level()
 
 func despawn():
 	_curr_enemies -= 1

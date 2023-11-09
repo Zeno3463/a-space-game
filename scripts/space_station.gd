@@ -10,7 +10,7 @@ func _ready():
 	$TextureProgressBar.value = life
 	global_position = _get_random_position_in_radius(PlayerNode.global_position, distance)
 
-func _process(delta):
+func _process(_delta):
 	$TextureProgressBar.value = life
 
 func _get_random_position_in_radius(center: Vector2, radius: float):
@@ -31,11 +31,12 @@ func hit():
 	
 	# if there's no life left
 	if life <= 0:
-		# despawn the enemy
 		_respawn()
-		Ui.get_node("Ship Upgrade").position.y = 0
-		Ui.get_node("AnimationPlayer").play("ship upgrade fade")
-		get_tree().paused = true
+		Spawner.destroy_all()
+		# despawn the enemy
+		#Ui.get_node("Ship Upgrade").position.y = 0
+		#Ui.get_node("AnimationPlayer").play("ship upgrade fade")
+		#get_tree().paused = true
 
 func _respawn():
 	global_position = _get_random_position_in_radius(PlayerNode.global_position, distance)

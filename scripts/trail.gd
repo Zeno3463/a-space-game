@@ -6,7 +6,7 @@ var leave_tracks = true
 
 func _ready():
 	set_as_top_level(true)
-	remove_point(0)
+	if get_point_count() > 0: remove_point(0)
 
 func _physics_process(_delta):
 	if leave_tracks:

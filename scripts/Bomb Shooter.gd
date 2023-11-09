@@ -2,6 +2,7 @@ extends Node2D
 
 @export var bomb_scene: PackedScene
 var _start_reload = 0
+var can_shoot = true
 
 func _process(delta):
 	# Get the global position of the mouse
@@ -19,6 +20,7 @@ func _process(delta):
 	# check if the player is allowed to shoot bombs; if not, exit the function
 	if not PlayerNode.can_bomb: return
 	
+	if PlayerNode.is_dead or not can_shoot: return
 	# Auto shoot with a certain reload time
 	if _start_reload <= 0:
 		_shoot()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cw4w2fqrhnoqu"]
+[gd_scene load_steps=24 format=3 uid="uid://cw4w2fqrhnoqu"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_8wkfo"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_uhmdv"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://demxqncdqdwyw" path="res://sprites/icons/bullet speed.png" id="6_6jugj"]
 [ext_resource type="Texture2D" uid="uid://cpvr1je7j3joh" path="res://sprites/icons/reload.png" id="7_xl82y"]
 [ext_resource type="Texture2D" uid="uid://b48yrcrjec4f7" path="res://sprites/icons/max health.png" id="8_5usyy"]
-[ext_resource type="Texture2D" uid="uid://c8xtu1taagk8m" path="res://sprites/icons/figther class.png" id="9_v4hmc"]
-[ext_resource type="Texture2D" uid="uid://rcl0ohkq4rsv" path="res://sprites/icons/bomber class.png" id="10_v3gh6"]
-[ext_resource type="Texture2D" uid="uid://dpcmj56xvfcpc" path="res://sprites/icons/booster class.png" id="11_2cqar"]
 
 [sub_resource type="Gradient" id="Gradient_jl77d"]
 colors = PackedColorArray(0.226707, 0.226708, 0.226707, 1, 0.202723, 0.202723, 0.202723, 1)
@@ -58,14 +55,29 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Ship Upgrade:modulate")
+tracks/1/path = NodePath("TextureRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qkfw0"]
+resource_name = "black screen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_etwft"]
@@ -84,27 +96,11 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_pnth4"]
-resource_name = "ship upgrade fade"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ship Upgrade:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_waag8"]
 _data = {
 "RESET": SubResource("Animation_r72oe"),
-"normal upgrade fade": SubResource("Animation_etwft"),
-"ship upgrade fade": SubResource("Animation_pnth4")
+"black screen": SubResource("Animation_qkfw0"),
+"normal upgrade fade": SubResource("Animation_etwft")
 }
 
 [node name="UI" type="CanvasLayer"]
@@ -211,6 +207,7 @@ texture = ExtResource("4_ul00o")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/speed"]
 modulate = Color(0.597656, 0.894531, 0.3125, 1)
+layout_mode = 0
 offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
@@ -242,6 +239,7 @@ texture = ExtResource("5_1b42x")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/acceleration"]
 modulate = Color(0.464844, 0.683594, 0.25, 1)
+layout_mode = 0
 offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
@@ -273,6 +271,7 @@ texture = ExtResource("6_6jugj")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/bullet_speed"]
 modulate = Color(0.371094, 0.800781, 0.890625, 1)
+layout_mode = 0
 offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
@@ -305,6 +304,7 @@ texture = ExtResource("7_xl82y")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/reload_time"]
 modulate = Color(0.980469, 0.945313, 0.210938, 1)
+layout_mode = 0
 offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
@@ -337,6 +337,7 @@ texture = ExtResource("8_5usyy")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/max_life"]
 modulate = Color(0.671875, 0.195313, 0.195313, 1)
+layout_mode = 0
 offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
@@ -345,95 +346,17 @@ value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("1_8wkfo")
 
-[node name="Ship Upgrade" type="Control" parent="."]
-process_mode = 3
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 61.0
-offset_top = -1936.0
-offset_right = 101.0
-offset_bottom = -1896.0
-
-[node name="ColorRect" type="ColorRect" parent="Ship Upgrade"]
-layout_mode = 0
-offset_left = -406.0
-offset_right = 1246.0
-offset_bottom = 840.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.709804)
-
-[node name="Control" type="Control" parent="Ship Upgrade"]
-anchors_preset = 0
-offset_left = 127.0
-offset_top = 243.0
-offset_right = 167.0
-offset_bottom = 283.0
-
-[node name="shooter_class" type="Button" parent="Ship Upgrade/Control"]
-layout_mode = 0
-offset_top = 95.0
-offset_right = 138.0
-offset_bottom = 118.0
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
-text = "shooter"
-
-[node name="TextureRect" type="TextureRect" parent="Ship Upgrade/Control/shooter_class"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 30.0
-offset_top = -116.0
-offset_right = 117.0
-offset_bottom = -29.0
-texture = ExtResource("9_v4hmc")
-
-[node name="bomber_class" type="Button" parent="Ship Upgrade/Control"]
-layout_mode = 0
-offset_left = 217.0
-offset_top = 95.0
-offset_right = 355.0
-offset_bottom = 126.0
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
-text = "bomber"
-
-[node name="TextureRect" type="TextureRect" parent="Ship Upgrade/Control/bomber_class"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 38.0
-offset_top = -110.0
-offset_right = 109.0
-offset_bottom = -39.0
-texture = ExtResource("10_v3gh6")
-
-[node name="booster_class" type="Button" parent="Ship Upgrade/Control"]
-layout_mode = 0
-offset_left = 421.0
-offset_top = 95.0
-offset_right = 559.0
-offset_bottom = 126.0
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
-theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
-text = "booster"
-
-[node name="TextureRect" type="TextureRect" parent="Ship Upgrade/Control/booster_class"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 37.0
-offset_top = -106.0
-offset_right = 104.0
-offset_bottom = -39.0
-texture = ExtResource("11_2cqar")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_waag8")
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+offset_left = -98.0
+offset_top = -59.0
+offset_right = 1049.0
+offset_bottom = 656.0
+mouse_filter = 2
+texture = ExtResource("1_8wkfo")
