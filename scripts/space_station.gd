@@ -19,7 +19,7 @@ func _get_random_position_in_radius(center: Vector2, radius: float):
 		center.x + radius * cos(angle),
 		center.y + radius * sin(angle)
 	)
-	
+
 # called when the enemy is hit by a bullet
 func hit():
 	# subtract the life by the total bullet damage
@@ -33,10 +33,6 @@ func hit():
 	if life <= 0:
 		_respawn()
 		Spawner.destroy_all()
-		# despawn the enemy
-		#Ui.get_node("Ship Upgrade").position.y = 0
-		#Ui.get_node("AnimationPlayer").play("ship upgrade fade")
-		#get_tree().paused = true
 
 func _respawn():
 	global_position = _get_random_position_in_radius(PlayerNode.global_position, distance)

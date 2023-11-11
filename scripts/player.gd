@@ -5,7 +5,7 @@ class_name Player
 var dir = Vector2.ONE
 var is_dashing = false
 var can_dash = false
-var can_bomb = true
+var can_bomb = false
 
 var curr_points = 0
 var max_points = 5
@@ -42,12 +42,14 @@ var max_life_i = 0
 
 var is_dead = false
 
-@export var acceleration_list = [200, 210, 220, 230, 240, 250]
-@export var speed_list = [100, 150, 200, 250, 300, 350]
-@export var bullet_speed_list = [500, 550, 600, 650, 700, 750]
-@export var reload_time_list = [0.1, 0.08, 0.06, 0.04, 0.02, 0.01]
-@export var bullet_damage_list = [1, 2, 3, 4, 5, 6]
-@export var max_life_list = [10, 20, 40, 60, 80]
+var level = 0
+
+@export var acceleration_list = [[200, 210, 220, 230, 240, 250]]
+@export var speed_list = [[100, 150, 200, 250, 300, 350]]
+@export var bullet_speed_list = [[500, 550, 600, 650, 700, 750]]
+@export var reload_time_list = [[0.1, 0.08, 0.06, 0.04, 0.02, 0.01]]
+@export var bullet_damage_list = [[1, 2, 3, 4, 5, 6]]
+@export var max_life_list = [[10, 20, 40, 60, 80]]
 
 @export var damage_player_color: Color
 @export var explosion: PackedScene
@@ -55,12 +57,12 @@ var is_dead = false
 func _process(delta):
 	_handle_movement(delta)
 	_handle_points()
-	acceleration = acceleration_list[acceleration_i]
-	speed = speed_list[speed_i]
-	bullet_speed = bullet_speed_list[bullet_speed_i]
-	reload_time = reload_time_list[reload_time_i]
-	bullet_damage = bullet_damage_list[bullet_damage_i]
-	max_life = max_life_list[max_life_i]
+	acceleration = acceleration_list[level][acceleration_i]
+	speed = speed_list[level][speed_i]
+	bullet_speed = bullet_speed_list[level][bullet_speed_i]
+	reload_time = reload_time_list[level][reload_time_i]
+	bullet_damage = bullet_damage_list[level][bullet_damage_i]
+	max_life = max_life_list[level][max_life_i]
 
 # called when the player is hit
 func hit():
@@ -164,5 +166,4 @@ func _handle_dash():
 		set_velocity(Vector2.ZERO)
 		is_dashing = false
 		$Line2D.visible = false
-
 

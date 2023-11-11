@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buthc7i6qxfmx"]
+[gd_scene load_steps=14 format=3 uid="uid://buthc7i6qxfmx"]
 
 [ext_resource type="FontFile" uid="uid://iblcoq7hro1i" path="res://fonts/Linefont/Linefont-VariableFont_wdth,wght.ttf" id="1_54xga"]
 [ext_resource type="Script" path="res://scripts/mid_level.gd" id="1_t0l8f"]
@@ -6,15 +6,29 @@
 [ext_resource type="Texture2D" uid="uid://c8xtu1taagk8m" path="res://sprites/icons/figther class.png" id="3_58sm0"]
 [ext_resource type="Texture2D" uid="uid://dpcmj56xvfcpc" path="res://sprites/icons/booster class.png" id="4_m636t"]
 [ext_resource type="Texture2D" uid="uid://rcl0ohkq4rsv" path="res://sprites/icons/bomber class.png" id="5_hc75t"]
+[ext_resource type="Script" path="res://scripts/ship upgrade button.gd" id="5_n61bg"]
 [ext_resource type="Texture2D" uid="uid://db8kjwua3nssh" path="res://sprites/spaceship upright.png" id="6_1ip5g"]
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="7_58pdb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugh81"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hywbg"]
+bg_color = Color(0, 0, 0, 0.513726)
+corner_radius_top_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shqlg"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.796078)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1qtbc"]
 
 [node name="mid level" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_t0l8f")
+highlighted_color = Color(0, 0.627451, 0.52549, 1)
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 171.0
 offset_top = 45.0
 offset_right = 436.0
@@ -24,6 +38,7 @@ theme_override_font_sizes/font_size = 50
 text = "choose an upgrade before proceeding to the next level"
 
 [node name="Label2" type="Label" parent="."]
+layout_mode = 0
 offset_left = 47.0
 offset_top = 117.0
 offset_right = 577.0
@@ -32,35 +47,65 @@ theme_override_fonts/font = ExtResource("2_mg81j")
 theme_override_font_sizes/font_size = 20
 text = "choose an upgrade before proceeding to the next level"
 
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 614.0
+offset_top = 58.0
+offset_right = 879.0
+offset_bottom = 131.0
+theme_override_fonts/font = ExtResource("1_54xga")
+theme_override_font_sizes/font_size = 50
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 205.0
+offset_right = 888.0
+offset_bottom = 289.0
+theme_override_fonts/font = ExtResource("2_mg81j")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
 [node name="shooter_class" type="TextureButton" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 152.0
 offset_top = 241.0
 offset_right = 195.0
 offset_bottom = 284.0
 texture_normal = ExtResource("3_58sm0")
 stretch_mode = 0
+script = ExtResource("5_n61bg")
+txt = "add additional guns to the ship"
 
 [node name="booster_class" type="TextureButton" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 270.0
 offset_top = 241.0
 offset_right = 313.0
 offset_bottom = 284.0
 texture_normal = ExtResource("4_m636t")
 stretch_mode = 0
+script = ExtResource("5_n61bg")
+txt = "add ability to dash. (press space to dash)"
 
 [node name="bomber_class" type="TextureButton" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 390.0
 offset_top = 241.0
 offset_right = 433.0
 offset_bottom = 284.0
 texture_normal = ExtResource("5_hc75t")
 stretch_mode = 0
+script = ExtResource("5_n61bg")
+txt = "add the ability to release a time bomb. (the bomb will be released automatically every 1 second)"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
+layout_mode = 0
 offset_left = 271.0
 offset_top = 167.0
 offset_right = 311.0
@@ -69,6 +114,7 @@ texture = ExtResource("6_1ip5g")
 
 [node name="line" type="TextureRect" parent="."]
 modulate = Color(0.4, 0.4, 0.4, 1)
+layout_mode = 0
 offset_left = 290.0
 offset_top = 205.0
 offset_right = 293.0
@@ -78,6 +124,7 @@ expand_mode = 1
 
 [node name="line2" type="TextureRect" parent="."]
 modulate = Color(0.4, 0.4, 0.4, 1)
+layout_mode = 0
 offset_left = 174.0
 offset_top = 243.0
 offset_right = 176.0
@@ -85,3 +132,28 @@ offset_bottom = 483.0
 rotation = -1.5708
 texture = ExtResource("7_58pdb")
 expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 620.0
+offset_top = 326.0
+offset_right = 885.0
+offset_bottom = 596.0
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 460.0
+offset_right = 561.0
+offset_bottom = 548.0
+theme_override_fonts/font = ExtResource("2_mg81j")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ugh81")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hywbg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_shqlg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1qtbc")
+text = "Confirm"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

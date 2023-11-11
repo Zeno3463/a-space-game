@@ -19,13 +19,13 @@ func _process(delta):
 		_start_spawn_freq = spawn_freq
 	else:
 		_start_spawn_freq -= delta
-		
+
 func _spawn():
 	var enemy = enemies.pick_random().instantiate()
 	enemy.global_position = _get_random_position_in_radius(PlayerNode.global_position, 300)
 	add_child(enemy)
 	_curr_enemies +=1
-	
+
 func _get_random_position_in_radius(center: Vector2, radius: float):
 	var angle = randf_range(0, 2 * PI)
 	return Vector2(

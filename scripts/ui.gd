@@ -7,7 +7,6 @@ func _ready():
 	for child in $Upgrades/Control.get_children():
 		child.get_node("TextureProgressBar").max_value = len(PlayerNode.get(child.name+"_list")) - 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	$TextureProgressBar2.max_value = PlayerNode.max_life
 	$TextureProgressBar2.value = PlayerNode.life
@@ -18,13 +17,13 @@ func _process(_delta):
 
 func _on_upgrade_pressed(n):
 	if not get_tree().paused: return
-	if PlayerNode.get(n+"_i") >= len(PlayerNode.get(n+"_list")) - 1: return
+	if PlayerNode.get(n+"_i") >= len(PlayerNode.get(n+"_list")[0]) - 1: return
 	n = n + "_i"
 	PlayerNode.set(n, PlayerNode.get(n) + 1)
 	$Upgrades.position.y = -1000
 	$Upgrades.modulate = Color.TRANSPARENT
 	if n == "max_life_i":
-		PlayerNode.life = PlayerNode.max_life_list[PlayerNode.max_life_i]
+		PlayerNode.life = PlayerNode.max_life_list[PlayerNode.level][PlayerNode.max_life_i]
 	get_tree().paused = false
 
 func load_mid_level():

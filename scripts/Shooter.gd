@@ -20,7 +20,7 @@ func _process(delta):
 		_start_reload = reload_time
 	else:
 		_start_reload -= delta
-		
+
 func _shoot():
 	for child in get_children():
 		if !child is Sprite2D and child.visible:
