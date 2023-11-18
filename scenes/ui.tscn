@@ -180,7 +180,6 @@ offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
 max_value = 6.0
-value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("1_8wkfo")
 
@@ -212,7 +211,6 @@ offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
 max_value = 6.0
-value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("1_8wkfo")
 
@@ -244,7 +242,6 @@ offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
 max_value = 6.0
-value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("1_8wkfo")
 
@@ -276,7 +273,6 @@ offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
 max_value = 6.0
-value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("1_8wkfo")
 
@@ -309,7 +305,6 @@ offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
 max_value = 6.0
-value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("1_8wkfo")
 
@@ -342,7 +337,6 @@ offset_top = 28.0
 offset_right = 139.0
 offset_bottom = 33.0
 max_value = 6.0
-value = 6.0
 nine_patch_stretch = true
 texture_progress = ExtResource("1_8wkfo")
 

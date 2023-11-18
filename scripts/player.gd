@@ -156,6 +156,14 @@ func upgrade_bomber_class():
 		$Gun/Sprite2D3.set_texture(bomber_classes[0])
 		bomber_class += 1
 
+func reset_upgrades():
+	acceleration_i = 0
+	speed_i = 0
+	bullet_speed_i = 0
+	reload_time_i = 0
+	bullet_damage_i = 0
+	max_life_i = 0
+
 func _handle_dash():
 	if not can_dash: return
 	if Input.is_action_just_pressed("dash"):

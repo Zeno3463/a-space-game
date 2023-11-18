@@ -33,6 +33,12 @@ script = ExtResource("1_pjkta")
 shooter_classes = Array[Texture]([ExtResource("2_anoxv")])
 booster_classes = Array[Texture]([ExtResource("3_u8r74")])
 bomber_classes = Array[Texture]([ExtResource("4_u53c0")])
+acceleration_list = [[200, 210, 220], [210.0, 220.0, 230.0]]
+speed_list = [[100, 150, 200], [150.0, 200.0, 250.0]]
+bullet_speed_list = [[500, 550, 600], [550.0, 600.0, 650.0]]
+reload_time_list = [[0.1, 0.08, 0.06], [0.08, 0.06, 0.04]]
+bullet_damage_list = [[1, 2, 3, 4, 5.0], [4.0, 5.0, 6.0, 7.0, 8.0]]
+max_life_list = [[10, 15, 20, 25, 30], [20.0, 25.0, 30.0, 35.0, 40.0]]
 damage_player_color = Color(0.466667, 0.0784314, 0.0784314, 1)
 explosion = ExtResource("5_va36d")
 

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var enemies: Array[PackedScene]
+@export var enemies = [[]]
 @export var max_enemies = 10
 @export var spawn_freq = 0.5
 @export var mid_level: PackedScene
@@ -21,7 +21,8 @@ func _process(delta):
 		_start_spawn_freq -= delta
 
 func _spawn():
-	var enemy = enemies.pick_random().instantiate()
+	var pth = enemies[PlayerNode.level][randi() % len(enemies[PlayerNode.level])]
+	var enemy = load(pth).instantiate()
 	enemy.global_position = _get_random_position_in_radius(PlayerNode.global_position, 300)
 	add_child(enemy)
 	_curr_enemies +=1
