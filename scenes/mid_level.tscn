@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://buthc7i6qxfmx"]
+[gd_scene load_steps=12 format=3 uid="uid://buthc7i6qxfmx"]
 
 [ext_resource type="FontFile" uid="uid://iblcoq7hro1i" path="res://fonts/Linefont/Linefont-VariableFont_wdth,wght.ttf" id="1_54xga"]
 [ext_resource type="Script" path="res://scripts/mid_level.gd" id="1_t0l8f"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dpcmj56xvfcpc" path="res://sprites/icons/booster class.png" id="4_m636t"]
 [ext_resource type="Texture2D" uid="uid://rcl0ohkq4rsv" path="res://sprites/icons/bomber class.png" id="5_hc75t"]
 [ext_resource type="Script" path="res://scripts/ship upgrade button.gd" id="5_n61bg"]
-[ext_resource type="Texture2D" uid="uid://db8kjwua3nssh" path="res://sprites/spaceship upright.png" id="6_1ip5g"]
-[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="7_58pdb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugh81"]
 
@@ -70,10 +68,10 @@ autowrap_mode = 3
 [node name="shooter_class" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 152.0
-offset_top = 241.0
-offset_right = 195.0
-offset_bottom = 284.0
+offset_left = 145.0
+offset_top = 316.0
+offset_right = 270.0
+offset_bottom = 441.0
 texture_normal = ExtResource("3_58sm0")
 stretch_mode = 0
 script = ExtResource("5_n61bg")
@@ -82,10 +80,10 @@ txt = "add additional guns to the ship"
 [node name="booster_class" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 270.0
-offset_top = 241.0
-offset_right = 313.0
-offset_bottom = 284.0
+offset_left = 241.0
+offset_top = 168.0
+offset_right = 366.0
+offset_bottom = 293.0
 texture_normal = ExtResource("4_m636t")
 stretch_mode = 0
 script = ExtResource("5_n61bg")
@@ -94,44 +92,14 @@ txt = "add ability to dash. (press space to dash)"
 [node name="bomber_class" type="TextureButton" parent="."]
 texture_filter = 1
 layout_mode = 0
-offset_left = 390.0
-offset_top = 241.0
-offset_right = 433.0
-offset_bottom = 284.0
+offset_left = 326.0
+offset_top = 315.0
+offset_right = 451.0
+offset_bottom = 440.0
 texture_normal = ExtResource("5_hc75t")
 stretch_mode = 0
 script = ExtResource("5_n61bg")
 txt = "add the ability to release a time bomb. (the bomb will be released automatically every 1 second)"
-
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
-layout_mode = 0
-offset_left = 271.0
-offset_top = 167.0
-offset_right = 311.0
-offset_bottom = 207.0
-texture = ExtResource("6_1ip5g")
-
-[node name="line" type="TextureRect" parent="."]
-modulate = Color(0.4, 0.4, 0.4, 1)
-layout_mode = 0
-offset_left = 290.0
-offset_top = 205.0
-offset_right = 293.0
-offset_bottom = 243.0
-texture = ExtResource("7_58pdb")
-expand_mode = 1
-
-[node name="line2" type="TextureRect" parent="."]
-modulate = Color(0.4, 0.4, 0.4, 1)
-layout_mode = 0
-offset_left = 174.0
-offset_top = 243.0
-offset_right = 176.0
-offset_bottom = 483.0
-rotation = -1.5708
-texture = ExtResource("7_58pdb")
-expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 texture_filter = 1

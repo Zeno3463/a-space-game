@@ -20,7 +20,7 @@ config/icon="res://icon.svg"
 PlayerNode="*res://scenes/player.tscn"
 Spawner="*res://scenes/spawner.tscn"
 Ui="*res://scenes/ui.tscn"
-SpaceStation2="*res://scenes/space_station_2.tscn"
+SpaceStation="*res://scenes/space_station_spawner.tscn"
 
 [display]
 

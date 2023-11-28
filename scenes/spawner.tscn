@@ -5,5 +5,5 @@
 
 [node name="spawner" type="Node2D"]
 script = ExtResource("1_fhfos")
-enemies = [["res://scenes/enemy.tscn"], ["res://scenes/enemy.tscn", "res://scenes/fast enemy.tscn"]]
+enemies = [["res://scenes/enemy.tscn", "res://scenes/fast enemy.tscn", "res://scenes/shooter_enemy.tscn", "res://scenes/spike_enemy.tscn", "res://scenes/shooter_enemy.tscn"], ["res://scenes/enemy.tscn", "res://scenes/fast enemy.tscn", "res://scenes/spike_enemy.tscn", "res://scenes/spike_enemy.tscn"], PackedStringArray("res://scenes/enemy.tscn", "res://scenes/fast enemy.tscn", "res://scenes/spike_enemy.tscn", "res://scenes/shooter_enemy.tscn", "res://scenes/shooter_enemy.tscn", "res://scenes/shooter_enemy.tscn")]
 mid_level = ExtResource("6_o278p")

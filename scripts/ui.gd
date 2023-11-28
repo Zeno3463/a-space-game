@@ -31,14 +31,18 @@ func load_mid_level():
 	await get_tree().create_timer(5).timeout
 	get_node("AnimationPlayer").play("black screen")
 	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
 	var mid_level = preload("res://scenes/mid_level.tscn").instantiate()
 	add_child(mid_level)
 
 func unload_mid_level():
-	Spawner.can_spawn = true
-	PlayerNode.get_node("Gun").can_shoot = true
-	PlayerNode.get_node("Bomb Shooter").can_shoot = true
 	PlayerNode.level += 1
 	PlayerNode.reset_upgrades()
+	SpaceStation.spawn(PlayerNode.level)
 	get_node("mid level").queue_free()
 	get_node("AnimationPlayer").play_backwards("black screen")
+	Spawner.can_spawn = true
+	PlayerNode.get_node("Gun").can_shoot = true
+	if PlayerNode.bomber_class == 1:
+		PlayerNode.get_node("Bomb Shooter").can_shoot = true
+	get_tree().paused = false
