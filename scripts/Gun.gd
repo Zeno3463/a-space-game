@@ -26,6 +26,7 @@ func _process(delta):
 		_start_reload -= delta
 		
 func _shoot():
+	$AudioStreamPlayer2D.play()
 	# iterate through all the bullet spawn points
 	for child in get_children():
 		# if the child is a bullet spawn point

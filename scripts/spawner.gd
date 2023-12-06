@@ -39,7 +39,7 @@ func destroy_all():
 	PlayerNode.get_node("Gun").can_shoot = false
 	PlayerNode.get_node("Bomb Shooter").can_shoot = false
 	for child in get_children():
-		if child is Enemy:
+		if child is Enemy or child is Swarm_Enemy:
 			child.destroy()
 	Ui.load_mid_level()
 

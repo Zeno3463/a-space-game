@@ -13,7 +13,7 @@ func _process(_delta):
 	$TextureProgressBar3.max_value = PlayerNode.max_points
 	$TextureProgressBar3.value = PlayerNode.curr_points
 	for child in $Upgrades/Control.get_children():
-		child.get_node("TextureProgressBar").max_value = len(PlayerNode.get(child.name+"_list")[PlayerNode.level])
+		child.get_node("TextureProgressBar").max_value = len(PlayerNode.get(child.name+"_list")[PlayerNode.level]) - 1
 		child.get_node("TextureProgressBar").value = PlayerNode.get(child.name+"_i")
 
 func _on_upgrade_pressed(n):

@@ -10,6 +10,7 @@ var explosion = preload("res://scenes/explosion.tscn")
 @export var speed = 50
 @export var life = 5
 @export var points = 1
+@export var need_to_despawn = true
 
 @onready var enemy_gfx = get_node_or_null("AnimatedSprite2D")
 
@@ -41,7 +42,7 @@ func hit():
 		destroy()
 		
 func destroy():
-	Spawner.despawn()
+	if need_to_despawn: Spawner.despawn()
 	
 	# Add the points corresponding to this enemy to the player's total points
 	PlayerNode.curr_points += points

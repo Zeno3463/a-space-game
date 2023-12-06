@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://diwqlkd81vrl"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_3tc5g"]
+[ext_resource type="Texture2D" uid="uid://c3qf8n7u03jpx" path="res://sprites/swarm bug.png" id="1_i5ivl"]
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="3_bv7gq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3bf5r"]
+size = Vector2(8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o0d1"]
+atlas = ExtResource("1_i5ivl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vso1m"]
+atlas = ExtResource("1_i5ivl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1b16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o0d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vso1m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fjjpx"]
+polygon = PackedVector2Array(0, -3.11111, 0, -1.77778, -0.888889, -1.77778, -0.888889, -0.888889, -2.22222, -0.888889, -2.22222, 0.888889, -0.888889, 0.888889, -0.888889, 2.22222, 0, 2.22222, 0, 3.11111, 0.888889, 3.11111, 0.888889, 1.77778, 1.77778, 1.77778, 1.77778, 0.888889, 0.888889, 0.888889, 0.888889, -0.888889, 1.77778, -0.888889, 1.77778, -1.77778, 0.888889, -1.77778, 0.888889, -3.11111)
+
+[node name="Swarm Bug" type="CharacterBody2D"]
+script = ExtResource("1_3tc5g")
+speed = 100
+points = 0
+need_to_despawn = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3bf5r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.25, 2.25)
+sprite_frames = SubResource("SpriteFrames_a1b16")
+autoplay = "default"
+frame = 1
+frame_progress = 0.82901
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+occluder = SubResource("OccluderPolygon2D_fjjpx")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 9.0
+offset_bottom = -12.0
+value = 50.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_bv7gq")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://h8jc087qmx4w"]
+[gd_scene load_steps=5 format=3 uid="uid://h8jc087qmx4w"]
 
 [ext_resource type="Script" path="res://scripts/space_station_spawner.gd" id="1_pcnfd"]
 [ext_resource type="PackedScene" uid="uid://cnd0ix8fx6rh0" path="res://scenes/space_station.tscn" id="2_qk0o2"]
+[ext_resource type="PackedScene" uid="uid://c1lbwsgleubdp" path="res://scenes/space_station_3.tscn" id="2_ytd75"]
 [ext_resource type="PackedScene" uid="uid://28vnvksy7dyw" path="res://scenes/space_station_2.tscn" id="3_eaj7e"]
 
 [node name="Space Station Spawner" type="Node2D"]
 script = ExtResource("1_pcnfd")
-space_stations = Array[PackedScene]([ExtResource("2_qk0o2"), ExtResource("3_eaj7e")])
+space_stations = Array[PackedScene]([ExtResource("2_qk0o2"), ExtResource("3_eaj7e"), ExtResource("2_ytd75")])

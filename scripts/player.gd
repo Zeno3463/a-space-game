@@ -66,6 +66,7 @@ func _process(delta):
 
 # called when the player is hit
 func hit():
+	$AudioStreamPlayer2D.play()
 	if life <= 0: return
 	life -= 1
 	if life <= 0:

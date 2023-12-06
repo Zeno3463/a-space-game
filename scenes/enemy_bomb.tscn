@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=3 uid="uid://clbbt455ih63m"]
+
+[ext_resource type="Script" path="res://scripts/bomb.gd" id="1_1oljd"]
+[ext_resource type="Texture2D" uid="uid://7qrb04e3r2h1" path="res://sprites/bomb countdown.png" id="2_2jvtd"]
+[ext_resource type="Texture2D" uid="uid://skp5sy1bfhaj" path="res://White Circle.png" id="3_nuu5c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppy8a"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mn7oe"]
+radius = 78.0064
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh4d2"]
+atlas = ExtResource("2_2jvtd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3slaq"]
+atlas = ExtResource("2_2jvtd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_236cf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh4d2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3slaq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_w0dve"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_1iyjd"]
+resource_name = "explode"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.140741, 0.140741)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rr23h"]
+_data = {
+"RESET": SubResource("Animation_w0dve"),
+"explode": SubResource("Animation_1iyjd")
+}
+
+[node name="bomb" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_1oljd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ppy8a")
+disabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mn7oe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0.278431, 0.278431, 1)
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_236cf")
+autoplay = "default"
+frame_progress = 0.246789
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0.133333, 0.0784314)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_nuu5c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "explode"
+libraries = {
+"": SubResource("AnimationLibrary_rr23h")
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0, 1, 0, 0.211765)
+amount = 100
+lifetime = 0.2
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+angular_velocity_min = 500.0
+angular_velocity_max = 500.0
+orbit_velocity_min = 55.0
+orbit_velocity_max = 55.0

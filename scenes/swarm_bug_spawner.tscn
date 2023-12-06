@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnqwgc5uxu3kx"]
+
+[ext_resource type="Script" path="res://scripts/swarm_bug_spawner.gd" id="1_y1iuq"]
+[ext_resource type="PackedScene" uid="uid://diwqlkd81vrl" path="res://scenes/swarm_bug.tscn" id="2_4s3rw"]
+
+[node name="Swarm Bug Spawner" type="Node2D"]
+script = ExtResource("1_y1iuq")
+
+[node name="Swarm Bug" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(-26, 2)
+
+[node name="Swarm Bug2" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(24, 1)
+
+[node name="Swarm Bug3" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(-1, -44)
+
+[node name="Swarm Bug4" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(0, 44)
+
+[node name="Swarm Bug5" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(-64, -45)
+
+[node name="Swarm Bug6" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(-63, 45)
+
+[node name="Swarm Bug7" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(60, 45)
+
+[node name="Swarm Bug8" parent="." instance=ExtResource("2_4s3rw")]
+position = Vector2(63, -49)
