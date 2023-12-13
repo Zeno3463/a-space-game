@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://buthc7i6qxfmx"]
+[gd_scene load_steps=14 format=3 uid="uid://buthc7i6qxfmx"]
 
 [ext_resource type="FontFile" uid="uid://iblcoq7hro1i" path="res://fonts/Linefont/Linefont-VariableFont_wdth,wght.ttf" id="1_54xga"]
 [ext_resource type="Script" path="res://scripts/mid_level.gd" id="1_t0l8f"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dpcmj56xvfcpc" path="res://sprites/icons/booster class.png" id="4_m636t"]
 [ext_resource type="Texture2D" uid="uid://rcl0ohkq4rsv" path="res://sprites/icons/bomber class.png" id="5_hc75t"]
 [ext_resource type="Script" path="res://scripts/ship upgrade button.gd" id="5_n61bg"]
+[ext_resource type="AudioStream" uid="uid://ci8p24g8ujpvt" path="res://audio/blipSelect.wav" id="8_aj4kg"]
+[ext_resource type="AudioStream" uid="uid://d4egob66l410q" path="res://audio/powerUp.wav" id="9_xxuee"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ugh81"]
 
@@ -123,5 +125,11 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hywbg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_shqlg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1qtbc")
 text = "Confirm"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_aj4kg")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_xxuee")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

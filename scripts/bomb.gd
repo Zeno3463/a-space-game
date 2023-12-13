@@ -31,24 +31,28 @@ func _physics_process(delta):
 	velocity /= -bomb_speed_multiplier
 
 func _explode():
-	var player = AudioStreamPlayer2D.new()
-	player.stream = preload("res://audio/explosion.wav")
-	add_child(player)
-	player.playing = true
+	var hit_smth = false
 	# Iterate through all bodies overlapping with the bomb (using an Area2D as an area of effect)
 	for child in $Area2D.get_overlapping_bodies():
 		# Check if the overlapping body is of type Enemy and the bomb is friendly
 		if child is Enemy and friendly:
+			hit_smth = true
 			# Call the hit() function on the enemy to deal damage
 			child.hit()
 			# Check if the enemy still exists (not already destroyed by a previous hit)
 			if child != null:
 				child.hit()
 		elif not friendly and child is Player and not hit_player:
+			hit_smth = true
 			hit_player = true
 			child.hit()
 			if child != null:
 				child.hit()
+	if hit_smth:
+		var player = AudioStreamPlayer2D.new()
+		player.stream = preload("res://audio/explosion.wav")
+		add_child(player)
+		player.playing = true
 	# Remove the bomb from the scene
 	await $AnimationPlayer.animation_finished
 	queue_free()

@@ -10,7 +10,7 @@ func _ready():
 		if child is TextureButton:
 			child.pressed.connect(Callable(_on_ship_upgrade_pressed).bind(child))
 
-func _process(delta):
+func _process(_delta):
 	if PlayerNode.shooter_class == 1:
 		$shooter_class.modulate = highlighted_color
 		$shooter_class.disabled = true
@@ -24,6 +24,7 @@ func _process(delta):
 		queue_free()
 
 func _on_ship_upgrade_pressed(n):
+	$AudioStreamPlayer.play()
 	$Label3.text = n.txt
 	$Label4.text = n.txt
 	$TextureRect2.texture = n.texture_normal
@@ -36,10 +37,12 @@ func _on_ship_upgrade_pressed(n):
 
 func _on_button_pressed():
 	if not selected: return
+	$AudioStreamPlayer2.play()
 	if final_upgrade_name == "shooter_class":
 		PlayerNode.upgrade_shooter_class()
 	if final_upgrade_name == "booster_class":
 		PlayerNode.upgrade_booster_class()
 	if final_upgrade_name == "bomber_class":
 		PlayerNode.upgrade_bomber_class()
+	await $AudioStreamPlayer2.finished
 	Ui.unload_mid_level()

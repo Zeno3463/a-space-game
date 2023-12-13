@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://diwqlkd81vrl"]
+[gd_scene load_steps=10 format=3 uid="uid://diwqlkd81vrl"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_3tc5g"]
 [ext_resource type="Texture2D" uid="uid://c3qf8n7u03jpx" path="res://sprites/swarm bug.png" id="1_i5ivl"]
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="3_bv7gq"]
+[ext_resource type="AudioStream" uid="uid://b38evtc8vayjl" path="res://audio/hitHurt.wav" id="4_fbekv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3bf5r"]
 size = Vector2(8, 8)
@@ -61,3 +62,6 @@ offset_bottom = -12.0
 value = 50.0
 nine_patch_stretch = true
 texture_progress = ExtResource("3_bv7gq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_fbekv")

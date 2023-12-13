@@ -11,5 +11,5 @@ func _process(_delta):
 		Spawner.despawn()
 		queue_free()
 		
-func destroy():
+func destroy(_temp):
 	queue_free()

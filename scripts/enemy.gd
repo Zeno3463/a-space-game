@@ -14,6 +14,8 @@ var explosion = preload("res://scenes/explosion.tscn")
 
 @onready var enemy_gfx = get_node_or_null("AnimatedSprite2D")
 
+var dead = false
+
 func _ready():
 	# Set the initial life of the enemy using a TextureProgressBar
 	$TextureProgressBar.max_value = life
@@ -38,19 +40,26 @@ func hit():
 	# Subtract the life of the enemy by the bullet damage from the player
 	life -= PlayerNode.bullet_damage
 	# Check if there's no life left
-	if life <= 0:
+	if life <= 0 and not dead:
 		destroy()
 		
-func destroy():
+func destroy(can_add_points = true):
+	if dead: return
+	dead = true
 	if need_to_despawn: Spawner.despawn()
 	
 	# Add the points corresponding to this enemy to the player's total points
-	PlayerNode.curr_points += points
+	if can_add_points: PlayerNode.curr_points += points
+	
+	$AudioStreamPlayer2D.play()
+	modulate = Color.TRANSPARENT
 	
 	# Create an explosion effect at the enemy's position
 	var explosion_node = explosion.instantiate()
 	explosion_node.global_position = global_position
 	get_parent().add_child(explosion_node)
+	
+	await $AudioStreamPlayer2D.finished
 	
 	# Destroy the enemy
 	queue_free()

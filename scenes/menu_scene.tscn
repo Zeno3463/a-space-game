@@ -1,0 +1,144 @@
+[gd_scene load_steps=14 format=3 uid="uid://duvy4r6sfbarc"]
+
+[ext_resource type="FontFile" uid="uid://bl0ylqo1wj1th" path="res://fonts/M_PLUS_Code_Latin/MPLUSCodeLatin-VariableFont_wdth,wght.ttf" id="1_l1rkc"]
+[ext_resource type="Script" path="res://scripts/menu_scene.gd" id="1_ljagj"]
+[ext_resource type="Texture2D" uid="uid://bl3kdm4s12o6o" path="res://Lightmap.png" id="1_ot703"]
+[ext_resource type="FontFile" uid="uid://iblcoq7hro1i" path="res://fonts/Linefont/Linefont-VariableFont_wdth,wght.ttf" id="2_h1drw"]
+[ext_resource type="Texture2D" uid="uid://c1bvect1uy044" path="res://sprites/planets/Nebula Blue.png" id="2_jvnhw"]
+[ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="4_ddftd"]
+[ext_resource type="Script" path="res://scripts/follow_mouse.gd" id="5_mj6pc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_alqw0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7rd6o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugrbv"]
+bg_color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[sub_resource type="Animation" id="Animation_vjnwh"]
+resource_name = "scale"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+
+[sub_resource type="Animation" id="Animation_wbhd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_km1jt"]
+_data = {
+"RESET": SubResource("Animation_wbhd1"),
+"scale": SubResource("Animation_vjnwh")
+}
+
+[node name="menu scene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4584.0
+offset_top = 348.0
+offset_right = 4584.0
+offset_bottom = 348.0
+script = ExtResource("1_ljagj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 274.0
+offset_top = 178.0
+offset_right = 674.0
+offset_bottom = 305.0
+theme_override_fonts/font = ExtResource("1_l1rkc")
+theme_override_font_sizes/font_size = 100
+text = "Starfall"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 117.0
+offset_right = 583.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("2_h1drw")
+theme_override_font_sizes/font_size = 50
+text = "starfall by zeno game dev hope you enjoy it"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(0.192157, 0.192157, 0.192157, 1)
+z_index = 10
+position = Vector2(469, 257)
+amount = 250
+lifetime = 5.0
+preprocess = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(500, 300)
+gravity = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.380392, 0.380392, 0.380392, 1)
+z_index = -50
+texture_filter = 1
+position = Vector2(-632, -522)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_jvnhw")
+centered = false
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+process_mode = 3
+position = Vector2(465, 249)
+scale = Vector2(0.417969, 0.417969)
+energy = 2.0
+texture = ExtResource("1_ot703")
+script = ExtResource("5_mj6pc")
+
+[node name="Button" type="Button" parent="."]
+process_mode = 3
+layout_mode = 0
+offset_left = 375.0
+offset_top = 409.0
+offset_right = 562.0
+offset_bottom = 487.0
+pivot_offset = Vector2(91, 40)
+theme_override_fonts/font = ExtResource("1_l1rkc")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxEmpty_alqw0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7rd6o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ugrbv")
+text = "Play"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(480, 300)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.121569, 0.121569, 0.121569, 0.0627451)
+position = Vector2(478, 319.5)
+scale = Vector2(60.75, 40.9375)
+texture = ExtResource("4_ddftd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_km1jt")
+}
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

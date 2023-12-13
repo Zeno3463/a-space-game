@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://kmumewo5upbv"]
+[gd_scene load_steps=12 format=3 uid="uid://kmumewo5upbv"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_ps6d0"]
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="2_hv831"]
 [ext_resource type="Texture2D" uid="uid://ci122aj26gvjk" path="res://sprites/shooting bug.png" id="3_vwf1r"]
 [ext_resource type="Script" path="res://scripts/Shooter.gd" id="4_tapxx"]
 [ext_resource type="PackedScene" uid="uid://dqoncvtcyaw7m" path="res://scenes/enemy_bullet.tscn" id="5_jay4t"]
+[ext_resource type="AudioStream" uid="uid://b38evtc8vayjl" path="res://audio/hitHurt.wav" id="6_3e1xp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vv361"]
 atlas = ExtResource("3_vwf1r")
@@ -71,3 +72,6 @@ reload_time = 0.5
 bullet_speed = 400
 
 [node name="Node2D" type="Node2D" parent="Shooter"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3e1xp")

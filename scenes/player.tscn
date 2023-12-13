@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bhogay0a56j6x" path="res://scenes/bomb.tscn" id="9_c2mto"]
 [ext_resource type="Texture2D" uid="uid://djcqm8662ibqw" path="res://sprites/icons/arrow.png" id="10_u2drv"]
 [ext_resource type="AudioStream" uid="uid://bvr43w70y5smm" path="res://audio/laserShoot.wav" id="11_gef12"]
-[ext_resource type="AudioStream" uid="uid://b38evtc8vayjl" path="res://audio/hitHurt.wav" id="18_djkih"]
+[ext_resource type="AudioStream" uid="uid://ckw01byd2axyu" path="res://audio/hitHurt (1).wav" id="18_fa4mi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dgm2k"]
 size = Vector2(16, 16)
@@ -53,6 +53,7 @@ texture = ExtResource("1_eksl2")
 shape = SubResource("RectangleShape2D_dgm2k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 script = ExtResource("3_nt348")
@@ -153,7 +154,7 @@ scale = Vector2(2.358, 2.358)
 texture = ExtResource("10_u2drv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("18_djkih")
+stream = ExtResource("18_fa4mi")
 
 [connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

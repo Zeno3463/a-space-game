@@ -17,6 +17,7 @@ func _process(_delta):
 		child.get_node("TextureProgressBar").value = PlayerNode.get(child.name+"_i")
 
 func _on_upgrade_pressed(n):
+	$AudioStreamPlayer.play()
 	if not get_tree().paused: return
 	if PlayerNode.get(n+"_i") >= len(PlayerNode.get(n+"_list")[0]) - 1: return
 	n = n + "_i"

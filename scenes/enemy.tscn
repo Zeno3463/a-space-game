@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://jeivkdpw7ci0"]
+[gd_scene load_steps=10 format=3 uid="uid://jeivkdpw7ci0"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_6ulds"]
 [ext_resource type="Texture2D" uid="uid://bug3vjlfwkunf" path="res://sprites/bug.png" id="3_vdhc7"]
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="3_xvfkb"]
+[ext_resource type="AudioStream" uid="uid://b38evtc8vayjl" path="res://audio/hitHurt.wav" id="4_s7n7h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwoat"]
 atlas = ExtResource("3_vdhc7")
@@ -63,3 +64,6 @@ occluder = SubResource("OccluderPolygon2D_xttuo")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_c0dnl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s7n7h")

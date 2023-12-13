@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cw4w2fqrhnoqu"]
+[gd_scene load_steps=25 format=3 uid="uid://cw4w2fqrhnoqu"]
 
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="1_8wkfo"]
 [ext_resource type="Script" path="res://scripts/ui.gd" id="1_uhmdv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://demxqncdqdwyw" path="res://sprites/icons/bullet speed.png" id="6_6jugj"]
 [ext_resource type="Texture2D" uid="uid://cpvr1je7j3joh" path="res://sprites/icons/reload.png" id="7_xl82y"]
 [ext_resource type="Texture2D" uid="uid://b48yrcrjec4f7" path="res://sprites/icons/max health.png" id="8_5usyy"]
+[ext_resource type="AudioStream" uid="uid://ci8p24g8ujpvt" path="res://audio/blipSelect.wav" id="9_bif4o"]
 
 [sub_resource type="Gradient" id="Gradient_jl77d"]
 colors = PackedColorArray(0.226707, 0.226708, 0.226707, 1, 0.202723, 0.202723, 0.202723, 1)
@@ -310,31 +311,31 @@ texture_progress = ExtResource("1_8wkfo")
 
 [node name="max_life" type="Button" parent="Upgrades/Control"]
 layout_mode = 0
-offset_left = 421.0
+offset_left = 386.0
 offset_top = 193.0
-offset_right = 559.0
+offset_right = 597.0
 offset_bottom = 224.0
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rkij1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hj4x2")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_bybvr")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_42gvq")
-text = "max life + 1"
+text = "restore life and max life + 1"
 
 [node name="TextureRect" type="TextureRect" parent="Upgrades/Control/max_life"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 37.0
-offset_top = -106.0
-offset_right = 104.0
-offset_bottom = -39.0
+offset_left = 74.0
+offset_top = -108.0
+offset_right = 141.0
+offset_bottom = -41.0
 texture = ExtResource("8_5usyy")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Upgrades/Control/max_life"]
 modulate = Color(0.671875, 0.195313, 0.195313, 1)
 layout_mode = 0
 offset_top = 28.0
-offset_right = 139.0
+offset_right = 208.0
 offset_bottom = 33.0
 max_value = 6.0
 nine_patch_stretch = true
@@ -354,3 +355,7 @@ offset_right = 1049.0
 offset_bottom = 656.0
 mouse_filter = 2
 texture = ExtResource("1_8wkfo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("9_bif4o")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1inna0mmp2wn"]
+
+[ext_resource type="AudioStream" uid="uid://d0qkut7wh3im6" path="res://audio/y2mate.com - One Cosmos  Royalty Free SciFi Background Music No Copyright.mp3" id="1_qa72s"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_qa72s")
+autoplay = true

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://clbbt455ih63m"]
+[gd_scene load_steps=13 format=3 uid="uid://clbbt455ih63m"]
 
 [ext_resource type="Script" path="res://scripts/bomb.gd" id="1_1oljd"]
 [ext_resource type="Texture2D" uid="uid://7qrb04e3r2h1" path="res://sprites/bomb countdown.png" id="2_2jvtd"]
 [ext_resource type="Texture2D" uid="uid://skp5sy1bfhaj" path="res://White Circle.png" id="3_nuu5c"]
+[ext_resource type="Texture2D" uid="uid://bl3kdm4s12o6o" path="res://Lightmap.png" id="4_6nhb2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ppy8a"]
 radius = 2.0
@@ -114,3 +115,8 @@ angular_velocity_min = 500.0
 angular_velocity_max = 500.0
 orbit_velocity_min = 55.0
 orbit_velocity_max = 55.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(0.240234, 0.240234)
+color = Color(0, 0.560784, 0, 1)
+texture = ExtResource("4_6nhb2")

@@ -38,10 +38,21 @@ func destroy_all():
 	can_spawn = false
 	PlayerNode.get_node("Gun").can_shoot = false
 	PlayerNode.get_node("Bomb Shooter").can_shoot = false
+	for child in get_tree().get_root().get_node("/root/Main Scene").get_children():
+		if child is Bullet:
+			child.queue_free()
 	for child in get_children():
 		if child is Enemy or child is Swarm_Enemy:
-			child.destroy()
+			child.destroy(false)
 	Ui.load_mid_level()
+
+func reset():
+	for child in get_tree().get_root().get_node("/root/Main Scene").get_children():
+		if child is Bullet:
+			child.queue_free()
+	for child in get_children():
+		if child is Enemy or child is Swarm_Enemy:
+			child.destroy(false)
 
 func despawn():
 	_curr_enemies -= 1

@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cu8mjkwxj60mg"]
+[gd_scene load_steps=18 format=3 uid="uid://cu8mjkwxj60mg"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_0jpu4"]
 [ext_resource type="Texture2D" uid="uid://dgm2fno8mqeoq" path="res://White Square.png" id="2_b6tj7"]
 [ext_resource type="Texture2D" uid="uid://cogrh1lxuq3or" path="res://sprites/spike bug.png" id="3_w8iv6"]
 [ext_resource type="Script" path="res://scripts/spike.gd" id="4_j7rs2"]
 [ext_resource type="PackedScene" uid="uid://dqoncvtcyaw7m" path="res://scenes/enemy_bullet.tscn" id="5_kqq5j"]
+[ext_resource type="AudioStream" uid="uid://b38evtc8vayjl" path="res://audio/hitHurt.wav" id="6_1tfsg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gr5b3"]
 atlas = ExtResource("3_w8iv6")
@@ -115,6 +116,7 @@ script = ExtResource("4_j7rs2")
 bullet_scene = ExtResource("5_kqq5j")
 reload_time = 1.6
 bullet_speed = 100
+lifetime = 10
 
 [node name="Node2D" type="Node2D" parent="shooter"]
 position = Vector2(-18, 0)
@@ -146,3 +148,6 @@ rotation = 1.5708
 [node name="Node2D8" type="Node2D" parent="shooter"]
 position = Vector2(-13, 13)
 rotation = -3.75246
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_1tfsg")

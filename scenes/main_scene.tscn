@@ -1,7 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://lj4nem8ulqv4"]
+[gd_scene load_steps=3 format=3 uid="uid://lj4nem8ulqv4"]
 
 [ext_resource type="PackedScene" uid="uid://cw4w2fqrhnoqu" path="res://scenes/ui.tscn" id="1_bwd6c"]
+[ext_resource type="Texture2D" uid="uid://c1bvect1uy044" path="res://sprites/planets/Nebula Blue.png" id="2_y78p4"]
 
 [node name="Main Scene" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource("1_bwd6c")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(584, 300)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.380392, 0.380392, 0.380392, 1)
+z_index = -50
+texture_filter = 1
+position = Vector2(-575, -300)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_y78p4")
+centered = false

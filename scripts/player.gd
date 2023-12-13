@@ -50,6 +50,7 @@ var level = 0
 @export var reload_time_list = [[0.1, 0.08, 0.06, 0.04, 0.02, 0.01]]
 @export var bullet_damage_list = [[1, 2, 3, 4, 5, 6]]
 @export var max_life_list = [[10, 20, 40, 60, 80]]
+@export var point_multiplier_list = [5, 20, 30]
 
 @export var damage_player_color: Color
 @export var explosion: PackedScene
@@ -78,6 +79,8 @@ func hit():
 		var explosion_node = explosion.instantiate()
 		explosion_node.global_position = global_position
 		get_tree().get_root().get_node("/root/Main Scene").add_child(explosion_node)
+		await get_tree().create_timer(3).timeout
+		_respawn()
 	$Camera2D.shake(50)
 	$Gun/Sprite2D.modulate = damage_player_color
 	await get_tree().create_timer(0.2).timeout
@@ -176,3 +179,16 @@ func _handle_dash():
 		is_dashing = false
 		$Line2D.visible = false
 
+func _respawn():
+	reset_upgrades()
+	is_dead = false
+	$Sprite2D2.visible = true
+	$Gun/Sprite2D.visible = true
+	$Gun/Sprite2D2.visible = true
+	$Gun/Sprite2D3.visible = true
+	life = max_life
+	max_points = point_multiplier_list[level]
+	curr_points = 0
+	Spawner.reset()
+	SpaceStation.respawn()
+	Ui.get_node("AnimationPlayer").play_backwards("black screen")

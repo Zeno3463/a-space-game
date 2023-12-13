@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0qkut7wh3im6"
+path="res://.godot/imported/y2mate.com - One Cosmos  Royalty Free SciFi Background Music No Copyright.mp3-ed5e24f2389fa29a60f644f0faa17610.mp3str"
+
+[deps]
+
+source_file="res://audio/y2mate.com - One Cosmos  Royalty Free SciFi Background Music No Copyright.mp3"
+dest_files=["res://.godot/imported/y2mate.com - One Cosmos  Royalty Free SciFi Background Music No Copyright.mp3-ed5e24f2389fa29a60f644f0faa17610.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
