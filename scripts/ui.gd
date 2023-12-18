@@ -47,3 +47,11 @@ func unload_mid_level():
 	if PlayerNode.bomber_class == 1:
 		PlayerNode.get_node("Bomb Shooter").can_shoot = true
 	get_tree().paused = false
+
+func load_end_screen():
+	await get_tree().create_timer(5).timeout
+	get_node("AnimationPlayer").play("black screen")
+	await get_tree().create_timer(1).timeout
+	get_tree().paused = true
+	var mid_level = preload("res://scenes/end_scene.tscn").instantiate()
+	add_child(mid_level)

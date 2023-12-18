@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var life = 1000
+@export var last = false
 var explosion = preload("res://scenes/explosion.tscn")
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +23,7 @@ func hit():
 	
 	# if there's no life left
 	if life <= 0:
-		Spawner.destroy_all()
+		Spawner.destroy_all(last)
 		queue_free()
 
 func _on_area_2d_body_entered(body):

@@ -34,7 +34,7 @@ func _get_random_position_in_radius(center: Vector2, radius: float):
 		center.y + radius * sin(angle)
 	)
 
-func destroy_all():
+func destroy_all(last = false):
 	can_spawn = false
 	PlayerNode.get_node("Gun").can_shoot = false
 	PlayerNode.get_node("Bomb Shooter").can_shoot = false
@@ -44,7 +44,10 @@ func destroy_all():
 	for child in get_children():
 		if child is Enemy or child is Swarm_Enemy:
 			child.destroy(false)
-	Ui.load_mid_level()
+	if not last:
+		Ui.load_mid_level()
+	else:
+		Ui.load_end_screen()
 
 func reset():
 	for child in get_tree().get_root().get_node("/root/Main Scene").get_children():

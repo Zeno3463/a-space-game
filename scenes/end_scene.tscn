@@ -1,0 +1,288 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgogofo3a7rfb"]
+
+[ext_resource type="FontFile" uid="uid://bl0ylqo1wj1th" path="res://fonts/M_PLUS_Code_Latin/MPLUSCodeLatin-VariableFont_wdth,wght.ttf" id="2_cbbsl"]
+[ext_resource type="FontFile" uid="uid://iblcoq7hro1i" path="res://fonts/Linefont/Linefont-VariableFont_wdth,wght.ttf" id="3_fxqsk"]
+
+[sub_resource type="Animation" id="Animation_32dfl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("text2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("text4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("text5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g04x8"]
+resource_name = "new_animation"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.6, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("text2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 2.6, 3.6, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("text3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.1, 4.6, 5.6, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("text4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.1, 6.6, 7.6, 8.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("text5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.1, 8.6, 9.6, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ypfnv"]
+_data = {
+"RESET": SubResource("Animation_32dfl"),
+"new_animation": SubResource("Animation_g04x8")
+}
+
+[node name="mid level" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="text" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="text"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 201.0
+offset_right = 956.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("3_fxqsk")
+theme_override_font_sizes/font_size = 50
+text = "choose an upgrade before proceeding to the next level"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="text"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 283.0
+offset_right = 962.0
+offset_bottom = 356.0
+theme_override_fonts/font = ExtResource("2_cbbsl")
+theme_override_font_sizes/font_size = 25
+text = "made by zeno"
+horizontal_alignment = 1
+
+[node name="text2" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="text2"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 201.0
+offset_right = 956.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("3_fxqsk")
+theme_override_font_sizes/font_size = 50
+text = "pixel art by zeno thank you so much"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="text2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 283.0
+offset_right = 962.0
+offset_bottom = 356.0
+theme_override_fonts/font = ExtResource("2_cbbsl")
+theme_override_font_sizes/font_size = 25
+text = "pixel art by zeno"
+horizontal_alignment = 1
+
+[node name="text3" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="text3"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 201.0
+offset_right = 956.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("3_fxqsk")
+theme_override_font_sizes/font_size = 50
+text = "the music is royalty free SciFi Background Music No Copyright.mps"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="text3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 283.0
+offset_right = 962.0
+offset_bottom = 356.0
+theme_override_fonts/font = ExtResource("2_cbbsl")
+theme_override_font_sizes/font_size = 25
+text = "music - One Cosmos"
+horizontal_alignment = 1
+
+[node name="text4" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="text4"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 201.0
+offset_right = 956.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("3_fxqsk")
+theme_override_font_sizes/font_size = 50
+text = "sound effects is by my beloved jsfxr"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="text4"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 283.0
+offset_right = 962.0
+offset_bottom = 356.0
+theme_override_fonts/font = ExtResource("2_cbbsl")
+theme_override_font_sizes/font_size = 25
+text = "sound effects - jsfxr"
+horizontal_alignment = 1
+
+[node name="text5" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="text5"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 201.0
+offset_right = 956.0
+offset_bottom = 274.0
+theme_override_fonts/font = ExtResource("3_fxqsk")
+theme_override_font_sizes/font_size = 50
+text = "really seriously thank you so much for playing my humble game"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="text5"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 283.0
+offset_right = 962.0
+offset_bottom = 356.0
+theme_override_fonts/font = ExtResource("2_cbbsl")
+theme_override_font_sizes/font_size = 25
+text = "thank your for playing"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+autoplay = "new_animation"
+libraries = {
+"": SubResource("AnimationLibrary_ypfnv")
+}
